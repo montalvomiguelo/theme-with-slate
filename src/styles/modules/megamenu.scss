@@ -1,0 +1,40 @@
+.megamenu {
+  background: lighten($color-border, 3.5%);
+  display: block;
+  border-top: 1px solid $color-border;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: $phi * 1em 0;
+  position: absolute;
+  right: 0;
+
+  .wrapper {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.megamenu__item {
+  > a {
+    display: block;
+    padding: .4em $gutter .4em $gutter;
+    color: $color-secondary;
+    width: 25%;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  figure {
+    position: absolute;
+    right: 0;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    top: 0;
+    width: 25%;
+    margin: 0;
+  }
+}

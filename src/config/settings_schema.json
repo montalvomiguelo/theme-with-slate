@@ -47,15 +47,37 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary color",
-        "default": "#000",
-        "info": "Used for text links, and primary buttons"
+        "default": "#F9C6CB"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary color",
+        "default": "#73D7D3"
       },
       {
         "type": "color",
         "id": "color_body_text",
         "label": "Text color",
-        "default": "#000",
-        "info": "Color used for content and paragraph text"
+        "default": "#565C61"
+      },
+      {
+        "type": "color",
+        "id": "color_headlines",
+        "label": "Headlines color",
+        "default": "#525A5E"
+      },
+      {
+        "type": "color",
+        "id": "color_light_body_text",
+        "label": "Light text color",
+        "default": "#BDBDBD"
+      },
+      {
+        "type": "color",
+        "id": "color_borders",
+        "label": "Borders and lines",
+        "default": "#EFF2F4"
       }
     ]
   },

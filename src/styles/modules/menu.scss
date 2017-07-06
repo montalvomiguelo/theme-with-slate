@@ -1,0 +1,48 @@
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__item {
+  display: inline-block;
+  vertical-align: top;
+
+  &:last-child {
+    > a {
+      padding-right: 0;
+    }
+  }
+
+  > a {
+    display: block;
+    padding: 1em;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  svg {
+    vertical-align: top;
+    width: 1em;
+    margin-left: .5em;
+  }
+
+}
+
+.menu__item--has-megamenu {
+  @extend .menu__item;
+}
+
+.menu__item--has-children {
+  position: relative;
+  @extend .menu__item;
+
+  &:hover {
+    > a {
+      color: $color-secondary;
+    }
+  }
+}

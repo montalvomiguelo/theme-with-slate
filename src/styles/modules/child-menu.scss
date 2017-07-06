@@ -1,0 +1,24 @@
+.child-menu {
+  border-top: 1px solid $color-border;
+  background: lighten($color-border, 3.5%);
+  display: none;
+  left: 0;
+  list-style: none;
+  min-width: 200px;
+  padding: 1em;
+  position: absolute;
+  top: 100%;
+
+  .menu__item--has-children:hover & {
+    display: block;
+  }
+}
+
+.child-menu__item {
+  > a {
+    display: block;
+    padding-top: .4em;
+    padding-bottom: .4em;
+  }
+}
+

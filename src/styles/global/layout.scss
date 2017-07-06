@@ -4,7 +4,7 @@ html {
   background-color: $color-body;
 }
 
-.page-width {
+.wrapper {
   @include clearfix();
   max-width: $width-site;
   padding: 0 $gutter;

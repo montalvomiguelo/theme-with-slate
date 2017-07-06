@@ -1,0 +1,47 @@
+.sub-menu {
+  @include clearfix();
+  left: 25%;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+}
+
+.sub-menu__item {
+  float: left;
+  width: 50%;
+
+  > a {
+    color: $color-secondary;
+    display: block;
+    padding: .4em $gutter .4em $gutter;
+    position: relative;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:before {
+      content: "";
+      height: 1px;
+      border-top: 1px solid;
+      width: 2em;
+      left: $gutter;
+      top: 100%;
+      position: absolute;
+    }
+  }
+}
+
+.sub-menu__list {
+  list-style: none;
+  padding-left: $gutter;
+  margin-top: .6em;
+
+  a {
+    display: block;
+    padding: .4em 0;
+  }
+}

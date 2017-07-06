@@ -68,3 +68,20 @@
   z-index: $z-index-skip-to-content;
   transition: none;
 }
+
+.dot-sep {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  width: 20px;
+  &:before {
+    border-radius: 50%;
+    border: 3px solid;
+    content: "";
+    left: 50%;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    margin-left: -3px;
+  }
+}

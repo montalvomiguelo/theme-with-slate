@@ -1,8 +1,19 @@
 /*================ Site Header ================*/
-.site-logo {
-  display: block;
+.site-header {
+  background: white;
+  border-bottom: 1px solid $color-border;
+  padding-top: $gutter / 1.618;
+  position: relative;
+}
+
+.site-header__left {
+  float: left;
 
   img {
-    display: block;
+    max-width: 100%;
   }
+}
+
+.site-header__right {
+  float: right;
 }

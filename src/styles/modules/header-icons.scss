@@ -1,0 +1,53 @@
+.header-icons {
+  text-align: right;
+}
+
+.header-icons__item {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    svg {
+      fill: $color-secondary;
+    }
+  }
+
+  & + .header-icons__item {
+    margin-left: .6em;
+  }
+
+  svg {
+    width: 41px;
+    height: 41px;
+    fill: $color-light-body-text;
+  }
+}
+
+.header-icons__item--cart {
+  &:hover {
+    .hearth {
+      fill: $color-primary;
+    }
+  }
+
+  svg {
+    margin-right: 17px;
+  }
+
+  small {
+    background: $color-secondary;
+    color: white;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    font-size: 13px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+  }
+}

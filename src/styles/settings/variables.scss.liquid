@@ -1,14 +1,17 @@
 /*================ Color Variables ================*/
 $color-primary: {{ settings.color_primary }};
+$color-secondary: {{ settings.color_secondary }};
 
 // Text colors
 $color-body-text: {{ settings.color_body_text }};
+$color-headlines: {{ settings.color_headlines }};
+$color-light-body-text: {{ settings.color_light_body_text }};
 
 // Backgrounds
 $color-body: #fff;
 
 // Border colors
-$color-border: #f6f6f6;
+$color-border: {{ settings.color_borders }};
 
 // Helper colors for form error states
 $color-disabled: #000;
@@ -20,12 +23,12 @@ $color-success-bg: #000;
 
 /*================ Typography Variables ================*/
 $font-weight-normal: 400;
-$font-weight-bold: 700;
+$font-weight-bold: 600;
 
-$font-stack-header: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-stack-header: 'Sacramento', cursive;
 $font-weight-header: $font-weight-bold;
 
-$font-stack-body: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-stack-body: 'Raleway', sans-serif;
 $font-size-base: {{ settings.type_base_size }};
 
 /*============================================================================
@@ -78,3 +81,5 @@ $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
 $svg-select-icon: #{'{{ "ico-select.svg" | asset_url }}'};
+
+$phi: 1.618;
