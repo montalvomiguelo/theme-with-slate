@@ -1,5 +1,18 @@
 .header-icons {
   text-align: right;
+
+  @include media-query($medium-down) {
+    padding-top: .95em;
+    padding-bottom: .95em;
+  }
+
+  .site-header--sticky & {
+    @include media-query($large-up) {
+      float: right;
+      padding-top: .95em;
+      padding-bottom: .95em;
+    }
+  }
 }
 
 .header-icons__item {
@@ -49,5 +62,11 @@
     right: 0;
     top: 50%;
     margin-top: -10px;
+  }
+}
+
+.header-icons__item--search {
+  @include media-query($medium-down) {
+    display: none;
   }
 }

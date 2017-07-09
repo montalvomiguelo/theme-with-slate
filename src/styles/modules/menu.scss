@@ -19,6 +19,11 @@
     padding: 1em;
     text-transform: uppercase;
 
+    .site-header--sticky & {
+      padding-bottom: $phi * 1em;
+      padding-top: $phi * 1em;
+    }
+
     &:hover {
       color: $color-secondary;
     }
@@ -40,9 +45,9 @@
   position: relative;
   @extend .menu__item;
 
-  &:hover {
     > a {
-      color: $color-secondary;
+      &:hover {
+        color: $color-secondary;
+      }
     }
-  }
 }

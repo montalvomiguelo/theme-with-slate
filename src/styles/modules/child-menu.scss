@@ -1,5 +1,4 @@
 .child-menu {
-  border-top: 1px solid $color-border;
   background: lighten($color-border, 3.5%);
   display: none;
   left: 0;
@@ -7,9 +6,9 @@
   min-width: 200px;
   padding: 1em;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 0px);
 
-  .menu__item--has-children:hover & {
+  .menu__item--active-child-menu & {
     display: block;
   }
 }

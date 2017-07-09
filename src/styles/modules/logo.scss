@@ -11,10 +11,27 @@
 
 
 .logo__image-alt {
-  display: none;
+  @include vertical-align(absolute);
   line-height: normal;
+  height: 50px;
+
+  @include media-query($large-up) {
+    display: none;
+  }
+
+  .site-header--sticky & {
+    display: block;
+  }
 }
 
 .logo__image {
   line-height: normal;
+
+  @include media-query($medium-down) {
+    display: none;
+  }
+
+  .site-header--sticky & {
+    display: none;
+  }
 }

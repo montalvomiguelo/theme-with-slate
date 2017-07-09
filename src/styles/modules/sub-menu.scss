@@ -6,6 +6,11 @@
   position: absolute;
   top: 0;
   width: 50%;
+  display: none;
+
+  .megamenu__item--active-sub-menu & {
+    display: block;
+  }
 }
 
 .sub-menu__item {
@@ -18,10 +23,6 @@
     padding: .4em $gutter .4em $gutter;
     position: relative;
     text-transform: uppercase;
-
-    &:hover {
-      color: $color-primary;
-    }
 
     &:before {
       content: "";
@@ -43,5 +44,6 @@
   a {
     display: block;
     padding: .4em 0;
+    font-size: $font-size-small;
   }
 }

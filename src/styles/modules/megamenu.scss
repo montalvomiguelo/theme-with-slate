@@ -1,13 +1,17 @@
 .megamenu {
   background: lighten($color-border, 3.5%);
-  display: block;
-  border-top: 1px solid $color-border;
+  display: none;
   left: 0;
   list-style: none;
   margin: 0;
   padding: $phi * 1em 0;
   position: absolute;
   right: 0;
+  top: calc(100% - 0px);
+
+  .menu__item--active-megamenu & {
+    display: block;
+  }
 
   .wrapper {
     position: relative;
@@ -36,5 +40,38 @@
     top: 0;
     width: 25%;
     margin: 0;
+    display: none;
+
+    a {
+      color: $color-light-body-text;
+      &:hover {
+        svg {
+          fill: $color-secondary;
+        }
+      }
+    }
+  }
+
+  figcaption {
+    text-transform: uppercase;
+    font-size: $font-size-small;
+
+    svg {
+      vertical-align: top;
+      width: 1em;
+      height: 1em;
+      margin-left: .5em;
+    }
+  }
+
+}
+
+.megamenu__item--active-sub-menu {
+  > a {
+    color: $color-primary;
+  }
+
+  figure {
+    display: block;
   }
 }

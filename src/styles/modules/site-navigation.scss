@@ -1,3 +1,13 @@
 .site-navigation {
   margin-top: $gutter - 1;
+
+  @include media-query($medium-down) {
+    display: none;
+  }
+
+  .site-header--sticky & {
+    margin-top: 0;
+    margin-right: $gutter;
+    float: right;
+  }
 }

@@ -5,8 +5,8 @@
     }
   {% endif %}
 
-  .site-header__left {
-    max-width: {{ section.settings.logo_max_width }}px;
+  .logo__image {
+    width: {{ section.settings.logo_max_width }}px;
   }
 
   .megamenu {
@@ -31,7 +31,7 @@
         {% endif %}
             <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
               {% if section.settings.logo_use_image %}
-                <img class="logo__image-large" src="{{ section.settings.logo | img_url: '400x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
+                <img class="logo__image" src="{{ section.settings.logo | img_url: '400x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
                 <img class="logo__image-alt" src="{{ section.settings.logo_alt | img_url: '300x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
               {% else %}
                 {{ shop.name }}
@@ -46,7 +46,7 @@
 
       <div class="site-header__right">
         <div class="header-icons">
-          <a class="header-icons__item" href="#">
+          <a class="header-icons__item header-icons__item--search" href="#" data-open-search>
             {% include 'icon-search' %}
           </a>
 
@@ -103,7 +103,7 @@
                     <div class="wrapper">
                       {% for childlink in linklists[child_list_handle].links %}
                         {% assign grandchild_list_handle = childlink.title | handleize %}
-                        <li class="megamenu__item">
+                        <li class="megamenu__item {% if forloop.first == true %}megamenu__item--active-sub-menu{% endif %}">
                           <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
                           {% if linklists[grandchild_list_handle].links != blank %}
                             <ul class="sub-menu">
@@ -131,6 +131,10 @@
                                 {% else %}
                                   <img src="{{ kollection.products.first | img_url: '480x' }}" alt="{{ kollection.title | escape }}" />
                                 {% endif %}
+                                <figcaption>
+                                  {{ 'collections.general.view_all' | t }}
+                                  {% include 'icon-arrow-right' %}
+                                </figcaption>
                               </a>
                             </figure>
                           {% endif %}
@@ -150,8 +154,26 @@
         </nav>
       </div>
     </div>
-  </header>
 
+    <form class="site-header__search" action="/search" method="get" role="search">
+      <div class="wrapper">
+        <label for="Search" class="label-hidden">
+          {{ 'general.search.placeholder' | t }}
+        </label>
+        <button type="submit" class="btn">
+          {% include 'icon-search' %}
+        </button>
+        <input type="search"
+               name="q"
+               id="Search"
+               value="{{ search.terms | escape }}"
+               placeholder="{{ 'general.search.placeholder' | t }}">
+        <a href="#">
+          {% include 'icon-close' %}
+        </a>
+      </div>
+    </form>
+  </header>
 </div>
 
 {% schema %}
