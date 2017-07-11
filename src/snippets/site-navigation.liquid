@@ -1,0 +1,86 @@
+<nav class="site-navigation" role="navigation">
+  <ul class="menu">
+    {% for link in linklists[section.settings.main_linklist].links %}
+
+      {% assign child_list_handle = link.title | handleize %}
+      {% assign grandchildlink_length = 0 %}
+
+      {% for childlink in linklists[child_list_handle].links %}
+        {% assign grandchild_list_handle = childlink.title | handleize %}
+        {% assign grandchildlink_length = grandchildlink_length   | plus: linklists[grandchild_list_handle].links.size %}
+      {% endfor %}
+
+      {% if linklists[child_list_handle].links != blank %}
+        {% if grandchildlink_length == 0 %}
+          <li class="menu__item--has-children">
+        {% else %}
+          <li class="menu__item--has-megamenu">
+        {% endif %}
+
+        <a href="{{ link.url }}">
+          {{ link.title }}
+          {% include 'icon-arrow-down' %}
+        </a>
+
+        {% if grandchildlink_length == 0 %}
+          <ul class="child-menu">
+            {% for childlink in menus[child_list_handle].links %}
+              <li class="child-menu__item">
+                <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <ul class="megamenu">
+            <div class="wrapper">
+              {% for childlink in linklists[child_list_handle].links %}
+                {% assign grandchild_list_handle = childlink.title | handleize %}
+                <li class="megamenu__item {% if forloop.first == true %}megamenu__item--active-sub-menu{% endif %}">
+                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  {% if linklists[grandchild_list_handle].links != blank %}
+                    <ul class="sub-menu">
+                      {% for grandchildlink in linklists[grandchild_list_handle].links %}
+                        {% capture great_grandchild_list_handle %}{{ grandchild_list_handle }}-{{ grandchildlink.title | handleize }}{% endcapture %}
+                        <li class="sub-menu__item">
+                          <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                          {% if linklists[great_grandchild_list_handle].links != blank %}
+                            <ul class="sub-menu__list">
+                              {% for greatgrandchildlink in linklists[great_grandchild_list_handle].links %}
+                                <li><a href="{{ greatgrandchildlink.url }}">{{ greatgrandchildlink.title | escape }}</a></li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                  {% if childlink.type == 'collection_link' %}
+                    {% assign kollection = childlink.object %}
+                    <figure>
+                      <a href="{{ kollection.url }}">
+                        {% if kollection.image %}
+                          <img src="{{ kollection | img_url: '480x' }}" alt="{{ kollection.image.alt | escape }}" />
+                        {% else %}
+                          <img src="{{ kollection.products.first | img_url: '480x' }}" alt="{{ kollection.title | escape }}" />
+                        {% endif %}
+                        <figcaption>
+                          {{ 'collections.general.view_all' | t }}
+                          {% include 'icon-arrow-right' %}
+                        </figcaption>
+                      </a>
+                    </figure>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </div>
+          </ul>
+        {% endif %}
+      </li>
+      {% else %}
+        <li class="menu__item">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

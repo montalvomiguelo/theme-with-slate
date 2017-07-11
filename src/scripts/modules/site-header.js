@@ -94,7 +94,7 @@ theme.siteHeader = (function() {
       $openSearch: $(selectors.openSearch),
       $closeSearch: $(selectors.closeSearch),
       $siteHeaderSearch: $(selectors.siteHeaderSearch),
-    }
+    };
   }
 
   function closeOpenMenus() {
@@ -275,5 +275,5 @@ theme.siteHeader = (function() {
   return {
     init: init,
     unload: unload
-  }
+  };
 })();

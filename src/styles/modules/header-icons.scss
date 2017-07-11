@@ -1,5 +1,9 @@
 .header-icons {
-  text-align: right;
+  text-align: center;
+
+  @include media-query($medium-up) {
+    text-align: right;
+  }
 
   @include media-query($medium-down) {
     padding-top: .95em;
@@ -65,8 +69,11 @@
   }
 }
 
-.header-icons__item--search {
-  @include media-query($medium-down) {
+.header-icons__item--hamburger {
+  @include media-query($large-up) {
+    display: none;
+  }
+  @include media-query($small) {
     display: none;
   }
 }
