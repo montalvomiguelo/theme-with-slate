@@ -1,0 +1,15 @@
+.nav-drawer-overlay {
+  background: rgba($color-headlines, .75);
+  bottom: 0;
+  cursor: pointer;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1090;
+
+  @include media-query($large-up) {
+    display: none !important;
+  }
+}

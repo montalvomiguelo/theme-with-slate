@@ -42,7 +42,7 @@
         {% else %}
           </div>
         {% endif %}
-          <span href="#">
+          <span href="#" data-open-nav-drawer>
             {% include 'icon-hamburger' %}
           </span>
       </div>
@@ -68,7 +68,7 @@
             <small>{{ cart.item_count }}</small>
           </a>
 
-          <a class="header-icons__item header-icons__item--hamburger" href="#">
+          <a class="header-icons__item header-icons__item--hamburger" href="#" data-open-nav-drawer>
             {% include 'icon-hamburger' %}
           </a>
         </div>
@@ -99,6 +99,13 @@
 </div>
 
 <div class="nav-drawer">
+  <a class="nav-drawer__close" href="#" data-close-nav-drawer>
+    {% include 'icon-close' %}
+  </a>
+  <form class="nav-drawer__search" action="/search" method="get" role="search">
+    <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}">
+    {% include 'icon-search' %}
+  </form>
   <ul class="mobile-nav">
     {% for link in linklists[section.settings.main_linklist].links %}
       {% assign child_list_handle = link.title | handleize %}
@@ -164,6 +171,8 @@
     {% endfor %}
   </ul>
 </div>
+
+<div class="nav-drawer-overlay" data-close-nav-drawer></div>
 
 {% schema %}
   {
