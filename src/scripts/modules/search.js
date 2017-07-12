@@ -5,6 +5,7 @@ theme.Search = (function() {
     body: 'body',
     openSearch: '[data-open-search]',
     siteHeaderSearch: '.site-header__search',
+    navDrawerSearch: '.nav-drawer__search',
   };
 
   var config = {
@@ -19,8 +20,10 @@ theme.Search = (function() {
 
   function cacheSelectors() {
     cache = {
+      $window: $(window),
       $openSearch: $(selectors.openSearch),
       $siteHeaderSearch: $(selectors.siteHeaderSearch),
+      $navDrawerSearch: $(selectors.navDrawerSearch),
     };
   }
 
@@ -30,7 +33,14 @@ theme.Search = (function() {
     cache.$openSearch.on('click.siteSearch', function(evt) {
       evt.preventDefault();
       evt.stopImmediatePropagation();
-      openSiteHeaderSearch();
+
+      if (cache.$window.width() < breakPoints.gridLarge) {
+        theme.NavDrawer.showNavDrawer();
+        cache.$navDrawerSearch.find('input[type="search"]').focus();
+      } else {
+        openSiteHeaderSearch();
+      }
+
     });
   }
 

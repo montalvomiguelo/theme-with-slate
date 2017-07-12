@@ -17,7 +17,13 @@ theme.NavDrawer = (function() {
   function init() {
     cacheSelectors();
 
-    cache.$openNavDrawer.on('click', showNavDrawer);
+    cache.$openNavDrawer.on('click', function(evt) {
+      evt.preventDefault();
+      evt.stopPropagation();
+
+      showNavDrawer();
+    });
+
     cache.$closeNavDrawer.on('click', function(evt) {
       evt.preventDefault();
       hideNavDrawer();
@@ -33,10 +39,7 @@ theme.NavDrawer = (function() {
     };
   }
 
-  function showNavDrawer(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
-
+  function showNavDrawer() {
     cache.$navDrawer.addClass(config.activeNavDrawerClass);
     cache.$navDrawerOverlay.fadeIn(300);
 
@@ -55,7 +58,8 @@ theme.NavDrawer = (function() {
   }
 
   return {
-    init: init
+    init: init,
+    showNavDrawer: showNavDrawer
   };
 
 })();

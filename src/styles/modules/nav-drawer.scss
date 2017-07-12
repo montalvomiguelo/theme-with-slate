@@ -39,12 +39,12 @@
     outline: none;
     box-sizing: border-box;
     padding-right: $grid-gutter-mobile;
-    &:focus {
-      color: $color-secondary;
-      & + svg {
-        fill: $color-secondary;
-      }
-    }
+
+    // &:focus {
+    //   & + svg {
+    //     fill: $color-secondary;
+    //   }
+    // }
   }
 
   svg {
