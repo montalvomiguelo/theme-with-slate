@@ -1,4 +1,4 @@
-theme.siteHeader = (function() {
+theme.SiteHeader = (function() {
   'use strict';
 
   var selectors = {
@@ -12,9 +12,6 @@ theme.siteHeader = (function() {
     megamenuItemActiveSubMenu: '.megamenu__item--active-sub-menu',
     siteHeader: '.site-header',
     promoBar: '.promo-bar',
-    openSearch: '[data-open-search]',
-    closeSearch: '[data-close-search]',
-    siteHeaderSearch: '.site-header__search',
   };
 
   var config = {
@@ -22,7 +19,6 @@ theme.siteHeader = (function() {
     activeMegamenuClass: 'menu__item--active-megamenu',
     activeSubMenuClass: 'megamenu__item--active-sub-menu',
     activeHeaderStickyClass: 'site-header--sticky',
-    activeHeaderSearchClass: 'site-header__search--active'
   };
 
   var breakPoints = {
@@ -71,12 +67,6 @@ theme.siteHeader = (function() {
     cache.$window.on('scroll.siteHeader', stickySiteHeaderOnScroll);
     cache.$window.on('resize.siteHeader', stickySiteHeaderOnScroll);
 
-    cache.$openSearch.on('click.siteSearch', function(evt) {
-      evt.preventDefault();
-      evt.stopImmediatePropagation();
-      openSiteHeaderSearch();
-    });
-
   }
 
   function cacheSelectors() {
@@ -91,9 +81,6 @@ theme.siteHeader = (function() {
       $megamenuItemActiveSubMenu: $(selectors.megamenuItemActiveSubMenu),
       $siteHeader: $(selectors.siteHeader),
       $promoBar: $(selectors.promoBar),
-      $openSearch: $(selectors.openSearch),
-      $closeSearch: $(selectors.closeSearch),
-      $siteHeaderSearch: $(selectors.siteHeaderSearch),
     };
   }
 
@@ -224,56 +211,20 @@ theme.siteHeader = (function() {
     cache.$siteHeader.removeClass(config.activeHeaderStickyClass);
   }
 
-  function openSiteHeaderSearch() {
-    cache.$siteHeaderSearch.addClass(config.activeHeaderSearchClass);
-
-    cache.$siteHeaderSearch.find('[type="search"]').focus();
-
-    closeOpenMenus();
-
-    $(window).on('keyup.siteSearch', function(evt) {
-      if (evt.keyCode === 27) {
-        closeSiteHeaderSearch();
-      }
-    });
-
-    $(selectors.body).on('click.siteSearch', function() {
-      closeSiteHeaderSearch();
-    });
-
-    cache.$siteHeaderSearch.on('click.siteSearch', function(evt) {
-      if (evt.target.tagName == 'A') {
-        return evt.preventDefault();
-      }
-
-      evt.stopPropagation();
-    });
-  }
-
-  function closeSiteHeaderSearch() {
-    cache.$siteHeaderSearch.removeClass(config.activeHeaderSearchClass);
-
-    $(window).off('keyup.siteSearch');
-    $(selectors.body).off('click.siteSearch')
-    cache.$siteHeaderSearch.off('click.siteSearch');
-  }
 
   function unload() {
     $(window).off('.siteNav');
-    $(window).off('.siteSearch');
     $(window).off('.siteHeader');
     cache.$hasChildren.off('.siteNav');
     cache.$hasMegamenu.off('.siteNav');
     cache.$megamenuItem.off('.siteNav');
     cache.$window.off('.siteNav');
-    cache.$openSearch.off('.siteSearch');
     $(selectors.body).off('.siteNav');
-    $(selectors.body).off('.siteSearch');
-    cache.$siteHeaderSearch.off('.siteSearch');
   }
 
   return {
     init: init,
-    unload: unload
+    unload: unload,
+    closeOpenMenus: closeOpenMenus
   };
 })();

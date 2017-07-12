@@ -1,4 +1,4 @@
-theme.navDrawer = (function() {
+theme.NavDrawer = (function() {
   'use strict';
 
   var selectors = {

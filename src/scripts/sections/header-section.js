@@ -1,8 +1,9 @@
 theme.HeaderSection = (function() {
   function Header() {
-    theme.siteHeader.init();
-    theme.mobileNav.init();
-    theme.navDrawer.init();
+    theme.SiteHeader.init();
+    theme.MobileNav.init();
+    theme.NavDrawer.init();
+    theme.Search.init();
   }
 
   Header.prototype.onUnload = function() {

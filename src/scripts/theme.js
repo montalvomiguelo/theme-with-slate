@@ -19,6 +19,7 @@ window.theme = window.theme || {};
 // =require modules/site-header.js
 // =require modules/mobile-nav.js
 // =require modules/nav-drawer.js
+// =require modules/search.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js

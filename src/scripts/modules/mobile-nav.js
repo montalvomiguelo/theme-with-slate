@@ -1,4 +1,4 @@
-theme.mobileNav = (function() {
+theme.MobileNav = (function() {
   'use strict';
 
   var selectors = {
