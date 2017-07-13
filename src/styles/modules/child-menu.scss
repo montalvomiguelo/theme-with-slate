@@ -7,6 +7,7 @@
   padding: 1em;
   position: absolute;
   top: calc(100% - 0px);
+  z-index: 100;
 
   .menu__item--active-child-menu & {
     display: block;

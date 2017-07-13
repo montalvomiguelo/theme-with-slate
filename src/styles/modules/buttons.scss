@@ -1,0 +1,46 @@
+.btn {
+  @include user-select();
+  @include prefix(appearance, none, webkit moz spec);
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  padding: .618em 1em;
+  background-color: $color-primary;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: normal;
+
+  &:hover,
+  &:focus {
+    background-color: $color-secondary;
+  }
+
+  .icon-arrow-right,
+  .icon-arrow-left {
+    height: 9px;
+  }
+
+  &[disabled] {
+    cursor: default;
+    opacity: 0.5;
+    background-color: $color-primary;
+    color: white;
+  }
+}
+
+.btn--secondary {
+  background-color: $color-secondary;
+  color: white;
+}
+
+.btn--small {
+  padding: 8px 10px;
+  font-size: $font-size-small;
+  line-height: 1;
+}

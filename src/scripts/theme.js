@@ -14,12 +14,14 @@ window.theme = window.theme || {};
 /*================ Sections ================*/
 // =require sections/product.js
 // =require sections/header-section.js
+// =require sections/footer-section.js
 
 /*================ Modules ================*/
 // =require modules/site-header.js
 // =require modules/mobile-nav.js
 // =require modules/nav-drawer.js
 // =require modules/search.js
+// =require modules/site-footer.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
@@ -29,6 +31,7 @@ $(document).ready(function() {
   var sections = new slate.Sections();
   sections.register('product', theme.Product);
   sections.register('header', theme.HeaderSection);
+  sections.register('footer', theme.FooterSection);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

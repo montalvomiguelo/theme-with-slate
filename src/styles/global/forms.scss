@@ -61,3 +61,50 @@ textarea {
     color: $color-error;
   }
 }
+
+/*================ Labels ================*/
+.label--error {
+  color: $color-error;
+}
+
+input,
+textarea {
+  padding: $input-padding-top-bottom-small $input-padding-left-right-small;
+
+  @include media-query($medium-up) {
+    padding: $input-padding-top-bottom $input-padding-left-right;
+  }
+}
+
+/*================ Form feedback messages ================*/
+.note,
+.form--success,
+.errors {
+  padding: 1em;
+  margin: 0 0 1em;
+  font-size: $font-size-small;
+}
+
+.note {
+  border: 1px solid $color-border;
+}
+
+.form--success {
+  color: $color-success;
+}
+
+.errors {
+  color: $color-error-input-text;
+
+  // Shopify generates ul element
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: $color-error;
+    text-decoration: underline;
+  }
+}

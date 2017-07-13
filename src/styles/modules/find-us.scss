@@ -1,0 +1,43 @@
+.find-us {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .site-footer & {
+    margin-top: $gutter;
+  }
+}
+
+.find-us__item {
+  display: inline-block;
+  margin-right: .5em;
+
+  .icon {
+    width: 25px;
+    height: 25px;
+    fill: white;
+  }
+
+  .icon-twitter {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icon-youtube {
+    width: 16px;
+    height: 16px;
+  }
+
+  a {
+    display: block;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 33px;
+    background: $color-primary;
+    text-align: center;
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+}

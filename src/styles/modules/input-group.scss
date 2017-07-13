@@ -1,0 +1,48 @@
+.input-group {
+  position: relative;
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+
+  .form-vertical & {
+    margin-bottom: 1em;
+  }
+}
+
+.input-group__field,
+.input-group__btn {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.input-group__field,
+.input-group__btn .btn {
+  height: $input-group-height-small;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @include media-query($medium-up) {
+    height: $input-group-height;
+  }
+}
+
+.input-group__field {
+  width: 100%;
+  border-right: 0;
+  border-radius: $border-radius 0 0 $border-radius;
+
+  .form-vertical & {
+    margin: 0;
+  }
+}
+
+.input-group__btn {
+  white-space: nowrap;
+  width: 1%;
+
+  .btn {
+    border-radius: 0 $border-radius $border-radius 0;
+    white-space: nowrap;
+  }
+}

@@ -7,6 +7,9 @@ $color-body-text: {{ settings.color_body_text }};
 $color-headlines: {{ settings.color_headlines }};
 $color-light-body-text: {{ settings.color_light_body_text }};
 
+// Button colors
+$opacity-link-hover: 0.6;
+
 // Backgrounds
 $color-body: #fff;
 
@@ -14,12 +17,12 @@ $color-body: #fff;
 $color-border: {{ settings.color_borders }};
 
 // Helper colors for form error states
-$color-disabled: #000;
-$color-disabled-border: #000;
-$color-error: #000;
-$color-error-bg: #000;
-$color-success: #000;
-$color-success-bg: #000;
+$color-disabled: #f4f4f4;
+$color-disabled-border: #f4f4f4;
+$color-error: #d20000;
+$color-error-bg: #fff8f8;
+$color-success: #19a340;
+$color-success-bg: #f8fff9;
 
 /*================ Typography Variables ================*/
 $font-weight-normal: 400;
@@ -75,12 +78,13 @@ $breakpoints: (
     - Default is no push classes
     - Will not work if `styles/global/grid.scss` is removed
 ==============================================================================*/
-$breakpoint-has-widths: ($small, $medium-up);
+$breakpoint-has-widths: ($small, $medium-up, $large-up);
 $breakpoint-has-push: ();
 
 /*================ Sizing Variables ================*/
 $width-site: 1180px;
 $gutter: 30px;
+$border-radius: 1.5em;
 
 /*================ Z-Index ================*/
 $z-index-dropdown: 2;
@@ -90,3 +94,13 @@ $z-index-skip-to-content: 10000; // really high to be safe of app markup
 $svg-select-icon: #{'{{ "ico-select.svg" | asset_url }}'};
 
 $phi: 1.618;
+
+// Forms
+$color-form-text: #333;
+$color-error-input-text: $color-error;
+$input-padding-top-bottom: 10px;
+$input-padding-left-right: 18px;
+$input-padding-top-bottom-small: 8px;
+$input-padding-left-right-small: 15px;
+$input-group-height: 46px;
+$input-group-height-small: 42px;

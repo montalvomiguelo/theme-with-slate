@@ -125,3 +125,7 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+@mixin user-select($value: none) {
+  @include prefix('user-select', #{$value}, moz ms webkit spec);
+}

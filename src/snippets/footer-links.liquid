@@ -1,0 +1,12 @@
+  <div class="footer-links">
+    <h5 class="footer-links__title">
+      {{ linklists[footer_linklist].title }}
+      {% include 'icon-plus' %}
+      {% include 'icon-minus' %}
+    </h5>
+    <ul class="footer-links__list">
+      {% for link in linklists[footer_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>

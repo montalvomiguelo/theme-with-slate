@@ -8,6 +8,7 @@
   position: absolute;
   right: 0;
   top: calc(100% - 0px);
+  z-index: 100;
 
   .menu__item--active-megamenu & {
     display: block;
