@@ -7,7 +7,7 @@ theme.HeaderSection = (function() {
   }
 
   Header.prototype.onUnload = function() {
-    theme.siteHeader.unload();
+    theme.SiteHeader.unload();
   };
 
   return Header;
