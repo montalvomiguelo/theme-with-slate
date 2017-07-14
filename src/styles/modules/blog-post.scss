@@ -1,0 +1,34 @@
+.blog-post {
+  background: white;
+  padding: $phi * 1em;
+
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.blog-post__title {
+  color: $color-secondary;
+}
+
+.blog-post__meta {
+  @include clearfix();
+  font-size: $font-size-small;
+  color: $color-light-body-text;
+
+  a {
+    float: right;
+    text-transform: uppercase;
+    color: $color-primary;
+    &:hover {
+      color: $color-secondary;
+    }
+
+    .icon {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+

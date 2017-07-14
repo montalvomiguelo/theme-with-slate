@@ -1,0 +1,87 @@
+<style>
+  .featured-blog {
+    background-color: {{ section.settings.background_color }};
+  }
+</style>
+<div class="featured-blog">
+  <div class="wrapper">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+
+    {% assign blog = blogs[section.settings.blog] %}
+
+    <div class="grid">
+      {% for article in blog.articles limit:3 %}
+        <div class="grid__item medium-up--one-third">
+          <div class="blog-post">
+            {% if article.image %}
+              <figure classs="blog-post__image">
+                <a href="{{ article.url }}">
+                  {{ article | img_url: '800x' | img_tag: article.title }}
+                </a>
+              </figure>
+            {% endif %}
+            <h4 class="blog-post__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h4>
+            <div class="rte">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+            <p class="blog-post__meta">
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+              <a href="{{ article.url }}">
+                {{ 'blogs.article.read_more' | t }}
+                {% include 'icon-arrow-right' %}
+              </a>
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="{{ blog.url }}" class="featured-blog__more">
+      {{ 'blogs.article.view_all' | t }}
+      {% include 'icon-arrow-right' %}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fbfbfc"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News"
+        }
+      }
+    ]
+  }
+{% endschema %}

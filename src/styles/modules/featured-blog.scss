@@ -1,0 +1,24 @@
+.featured-blog {
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+}
+
+.featured-blog__more {
+  color: $color-primary;
+  margin-top: $phi * 1em;
+  display: inline-block;
+
+  @include media-query($medium-up) {
+    float: right;
+    font-size: $font-size-h4;
+
+  }
+  &:hover {
+    color: $color-secondary;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+}
