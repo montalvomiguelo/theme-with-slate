@@ -1,0 +1,80 @@
+<style>
+  .call-to-action {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .call-to-action:hover {
+    background-color: {{ section.settings.background_color_hover }};
+  }
+</style>
+<div class="call-to-action">
+  <a href="{{ section.settings.url }}">
+    <div class="wrapper">
+      <div class="call-to-action__icon">
+        <img src="{{ section.settings.icon | img_url: '200x' }}" alt="{{ section.settings.headline }}">
+      </div>
+      <div class="call-to-action__content">
+        <p class="call-to-action__headline">{{ section.settings.headline }}</p>
+        <p class="call-to-action__text">{{ section.settings.text }}</p>
+      </div>
+      <span class="call-to-action__button">
+        {{ section.settings.button }}
+        {% include 'icon-arrow-right' %}
+      </span>
+    </div>
+  </a>
+</div>
+
+{% schema %}
+  {
+    "name": "Call to action",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "Call to action"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Some text here"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button",
+        "default": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Url"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#9ae1df"
+      },
+      {
+        "type": "color",
+        "id": "background_color_hover",
+        "label": "Background color hover",
+        "default": "#80d9d7"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Call to action",
+        "category": "CTA button"
+      }
+    ]
+  }
+{% endschema %}
