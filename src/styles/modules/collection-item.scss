@@ -1,6 +1,10 @@
 .collection-item {
   margin-bottom: $phi * 1em;
   text-align: center;
+
+  a {
+    display: block;
+  }
 }
 
 .collection-item__image {
@@ -27,5 +31,6 @@
 }
 
 .collection-item__description {
-  display: none;
+  text-align: left;
+  margin-top: 1em;
 }

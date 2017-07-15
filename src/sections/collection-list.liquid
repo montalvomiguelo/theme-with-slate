@@ -1,4 +1,9 @@
 <style>
+  {% if section.settings.enable_description == false %}
+    .collection-item__description {
+      display: none;
+    }
+  {% endif %}
   .collections-list {
     background-color: {{ section.settings.background_color }};
     {% if section.settings.background_image != blank %}
@@ -52,6 +57,12 @@
         "type": "image_picker",
         "id": "background_image",
         "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_description",
+        "label": "Enable descripton",
+        "default": true
       }
     ],
     "blocks": [

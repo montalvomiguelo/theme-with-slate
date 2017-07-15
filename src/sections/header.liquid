@@ -11,6 +11,19 @@
 
   .megamenu {
     height: {{ section.settings.megamenu_height }}px;
+    background-color: {{ section.settings.megamenu_background }};
+  }
+
+  .child-menu {
+    background-color: {{ section.settings.megamenu_background }};
+  }
+
+  .site-header__search {
+    background-color: {{ section.settings.megamenu_background }};
+  }
+
+  .mobile-nav {
+    background: lighten($color-border, 3.5%);
   }
 </style>
 {% unless section.settings.promo_bar_text == blank %}
@@ -221,6 +234,12 @@
         "id": "megamenu_height",
         "label": "Megamenu height (in pixels)",
         "default": "400"
+      },
+      {
+        "type": "color",
+        "id": "megamenu_background",
+        "label": "Megamenu background",
+        "default": "#fbfbfd"
       }
     ]
   }

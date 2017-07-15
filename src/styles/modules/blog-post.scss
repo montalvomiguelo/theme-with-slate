@@ -5,6 +5,13 @@
   figure {
     margin: 0;
     padding: 0;
+    text-align: center;
+
+    a {
+      &:hover {
+        opacity: $opacity-link-hover;
+      }
+    }
   }
 }
 
@@ -31,4 +38,3 @@
     }
   }
 }
-

@@ -1,14 +1,9 @@
 .site-footer {
-  background: lighten($color-border, 3.5%);
 }
 
 .site-footer__inner {
   padding-top: $phi * 2em;
   padding-bottom: $phi * 2em;
-  background: url({{ 'bg-footer.png' | asset_url }});
-  background-position-y: bottom;
-  background-size: $grid-large;
-  background-repeat: repeat-x;
 }
 
 .site-footer__contact {
@@ -46,6 +41,8 @@
   text-align: center;
 
   @include media-query($medium-up) {
+    padding-top: .5em;
+    padding-bottom: .5em;
     text-align: left;
   }
 

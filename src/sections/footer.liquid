@@ -1,3 +1,18 @@
+<style>
+  .site-footer {
+    background-color: {{ section.settings.background_color }};
+  }
+  {% if section.settings.background_image != blank %}
+    .site-footer__inner {
+      background-image: url({{ section.settings.background_image | img_url: '600x'}});
+      background-position-y: bottom;
+      background-repeat: repeat-x;
+    }
+  {% endif %}
+  .site-footer__copyright {
+    background-color: {{ section.settings.copyright_background }};
+  }
+</style>
 <footer class="site-footer" data-section-type="footer" data-section-id="{{ section.id }}">
   <div class="site-footer__inner">
     <div class="wrapper">
@@ -92,6 +107,23 @@
   {
     "name": "Footer",
     "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "color",
+        "id": "copyright_background",
+        "label": "Copyright background",
+        "default": "#f5f5f5"
+      }
       {
         "type": "link_list",
         "id": "footer_linklist_1",

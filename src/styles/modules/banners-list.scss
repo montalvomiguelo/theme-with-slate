@@ -6,4 +6,20 @@
 .banners-list__item {
   display: block;
   margin-bottom: $phi * 1em;
+
+  &:hover {
+    img {
+      opacity: $opacity-link-hover;
+    }
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a {
+    display: block;
+  }
 }
