@@ -1,0 +1,64 @@
+<div class="banners-list">
+  <div class="wrapper">
+    <div class="grid">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="grid__item medium-up--one-half">
+            <a class="banners-list__item" href="{{ block.settings.link }}">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | img_url: '600x' | img_tag: block.settings.alt }}
+              {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banners list",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "banner_image",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt",
+          "default": "Image title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banners list",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "banner_image"
+        },
+        {
+          "type": "banner_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
