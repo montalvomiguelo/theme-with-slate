@@ -39,3 +39,10 @@
     }
   }
 }
+
+.section-header__title--clean {
+  &:before,
+  &:after {
+    content: none;
+  }
+}

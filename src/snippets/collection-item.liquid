@@ -1,0 +1,22 @@
+<div class="collection-item">
+  <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+    {% if collection.image != blank %}
+      {{ collection | img_url: '600x600' | img_tag: collection.title, 'collection-item__image' }}
+    {% elsif collection.products.first != blank %}
+      {{ collection.products.first | img_url: '600x600' | img_tag: collection.title, 'collection-item__image' }}
+    {% elsif collection == empty %}
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+    {% endif %}
+    <h5 class="collection-item__title">
+      {% if collection == empty %}
+        {{ 'homepage.onboarding.collection_title' | t }}
+      {% else %}
+        {{ collection.title }}
+      {% endif %}
+    </h5>
+  </a>
+  <div class="rte collection-item__description">
+    {{ collection.description }}
+  </div>
+</div>

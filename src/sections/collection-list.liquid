@@ -1,35 +1,35 @@
-{% if section.settings.title != blank %}
-  <h2>{{ section.settings.title | escape }}</h2>
-{% endif %}
+<style>
+  .collections-list {
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: '1024x' }});
+    {% endif %}
+  }
+</style>
+<div class="collections-list">
+  <div class="wrapper">
 
-{% for block in section.blocks limit: section.blocks.size %}
-  <div {{ block.shopify_attributes }}>
-    {%- assign collection = collections[block.settings.collection] -%}
+    {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h2 class="section-header__title section-header__title--clean">{{ section.settings.title | escape }}</h2>
+    </div>
+    {% endif %}
 
-    <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
-      {% if collection.image != blank %}
-        {{ collection | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection.products.first != blank %}
-        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection == empty %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
+    <div class="grid grid--uniform">
+      {% for block in section.blocks limit: section.blocks.size %}
+        <div class="grid__item medium-up--one-third" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-item' %}
+        </div>
+      {% endfor %}
+    </div>
 
-      <p>
-        {% if collection == empty %}
-          {{ 'homepage.onboarding.collection_title' | t }}
-        {% else %}
-          {{ collection.title }}
-        {% endif %}
-      </p>
-    </a>
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+
   </div>
-{% endfor %}
-
-{% if section.blocks.size == 0 %}
-  {% include 'no-blocks' %}
-{% endif %}
+</div>
 
 {% schema %}
   {
@@ -41,6 +41,17 @@
         "id": "title",
         "label": "Heading",
         "default": "Collection list"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
       }
     ],
     "blocks": [

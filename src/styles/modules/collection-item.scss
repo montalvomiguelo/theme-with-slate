@@ -1,0 +1,31 @@
+.collection-item {
+  margin-bottom: $phi * 1em;
+  text-align: center;
+}
+
+.collection-item__image {
+  background: white;
+  display: inline-block;
+
+  .collection-item:hover &  {
+    opacity: $opacity-link-hover;
+  }
+}
+
+.collection-item__title {
+  color: $color-secondary;
+  margin-top: $phi * .5em;
+  margin-bottom: 0;
+
+  .collection-item:hover & {
+    color: $color-primary;
+  }
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h4;
+  }
+}
+
+.collection-item__description {
+  display: none;
+}
