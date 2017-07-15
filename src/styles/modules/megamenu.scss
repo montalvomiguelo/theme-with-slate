@@ -45,6 +45,9 @@
     a {
       color: $color-light-body-text;
       &:hover {
+        img {
+          opacity: $opacity-link-hover;
+        }
         svg {
           fill: $color-secondary;
         }

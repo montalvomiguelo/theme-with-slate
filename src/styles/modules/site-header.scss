@@ -4,14 +4,15 @@
   box-shadow: inset 0 -1px 0 0 $color-border;
   position: relative;
 
-  @include media-query($large-up) {
-    padding-top: $gutter / 1.618;
-  }
-
-  .wrapper {
+  >.wrapper {
     @include media-query($small) {
       padding-left: 0;
       padding-right: 0;
+    }
+
+    @include media-query($medium-up) {
+      display: table;
+      width: 100%;
     }
   }
 }
@@ -23,18 +24,25 @@
   padding-right: $grid-gutter-mobile;
   position: relative;
 
+  @include media-query($small) {
+    width: 100% !important;
+  }
+
+
   @include media-query($medium-up) {
     box-shadow: none;
-    position: static;
-    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   span {
     float: right;
     display: block;
     cursor: pointer;
-    padding-top: .95em;
-    padding-bottom: .95em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 
     @include media-query($medium-up) {
       display: none;
@@ -57,12 +65,12 @@
 
 .site-header__right {
   @include media-query($medium-up) {
-    float: right;
+    display: table-cell;
+    vertical-align: middle;
   }
 }
 
 .site-header--sticky {
-  @include clearfix();
   left: 0;
   position: fixed;
   right: 0;

@@ -1,20 +1,21 @@
 .header-icons {
   text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
 
   @include media-query($medium-up) {
     text-align: right;
   }
 
-  @include media-query($medium-down) {
-    padding-top: .95em;
-    padding-bottom: .95em;
+  @include media-query($large-up) {
+    padding-bottom: 0;
   }
 
   .site-header--sticky & {
     @include media-query($large-up) {
       float: right;
-      padding-top: .95em;
-      padding-bottom: .95em;
+      padding-bottom: 1em;
+      margin-left: $gutter;
     }
   }
 }
@@ -33,7 +34,7 @@
     margin-left: .6em;
   }
 
-  svg {
+  .icon {
     width: 41px;
     height: 41px;
     fill: $color-light-body-text;

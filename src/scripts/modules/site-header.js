@@ -94,9 +94,9 @@ theme.SiteHeader = (function() {
   }
 
   function showChildMenu($el) {
-    $el.addClass(config.activeChildMenuClass);
-
     closeOpenMenus();
+
+    $el.addClass(config.activeChildMenuClass);
 
     cache.$menuItemActiveChildMenu = $el;
 
@@ -114,9 +114,9 @@ theme.SiteHeader = (function() {
   }
 
   function showMegamenu($el) {
-    $el.addClass(config.activeMegamenuClass);
-
     closeOpenMenus();
+
+    $el.addClass(config.activeMegamenuClass);
 
     cache.$menuItemActiveMegamenu = $el;
 

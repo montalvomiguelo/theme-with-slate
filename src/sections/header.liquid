@@ -5,7 +5,7 @@
     }
   {% endif %}
 
-  .logo__image {
+  .site-header__left {
     width: {{ section.settings.logo_max_width }}px;
   }
 
@@ -42,10 +42,10 @@
         {% else %}
           <div class="logo" class="h1" itemscope itemtype="http://schema.org/Organization">
         {% endif %}
-            <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+            <a href="/" itemprop="url" class="logo__link{% if section.settings.logo != blank %} logo__link--image{% endif %}">
               {% if section.settings.logo_use_image %}
                 <img class="logo__image" src="{{ section.settings.logo | img_url: '400x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
-                <img class="logo__image-alt" src="{{ section.settings.logo_alt | img_url: '300x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
+                <img class="logo__image--alt" src="{{ section.settings.logo_alt | img_url: '300x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
               {% else %}
                 {{ shop.name }}
               {% endif %}

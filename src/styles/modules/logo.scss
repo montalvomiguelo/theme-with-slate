@@ -7,17 +7,27 @@
     max-width: 100%;
   }
 
-  a {
-    display: block;
-    line-height: normal;
-  }
+}
+
+.logo__link {
+  line-height: normal;
+}
+
+.logo__link--image {
+  line-height: 0;
+  display: block;
 }
 
 
-.logo__image-alt {
+.logo__image--alt {
   @include vertical-align(absolute);
   line-height: normal;
   height: 50px;
+  left: $grid-gutter-mobile;
+
+  @include media-query($medium-up) {
+    left: 0;
+  }
 
   @include media-query($large-up) {
     display: none;
@@ -29,7 +39,6 @@
 }
 
 .logo__image {
-  line-height: normal;
 
   @include media-query($medium-down) {
     display: none;
