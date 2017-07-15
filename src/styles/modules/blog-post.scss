@@ -17,12 +17,19 @@
 
 .blog-post__title {
   color: $color-secondary;
+  padding-bottom: $phi * .5em;
+  border-bottom: 1px solid $color-border;
+  margin-bottom: $phi * .5em;
+  margin-top: $phi * .5em;
+  text-align: center;
 }
 
 .blog-post__meta {
+  margin-top: $phi * 1em;
   @include clearfix();
   font-size: $font-size-small;
   color: $color-light-body-text;
+  margin-bottom: 0;
 
   a {
     float: right;
