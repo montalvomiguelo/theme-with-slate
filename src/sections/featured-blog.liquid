@@ -13,7 +13,7 @@
 
     <div class="grid">
       {% for article in blog.articles limit:3 %}
-        <div class="grid__item medium-up--one-third">
+        <div class="grid__item medium--one-half large-up--one-third">
           <div class="blog-post">
             {% if article.image %}
               <figure classs="blog-post__image">
@@ -41,6 +41,30 @@
             </p>
           </div>
         </div>
+      {% else %}
+        {% for i in (1..3) %}
+          <div class="grid__item medium-up--one-third">
+            <div class="blog-post">
+              <figure classs="blog-post__image">
+                <a href="#">
+                  {{ 'image' | placeholder_svg_tag }}
+                </a>
+              </figure>
+              <h4 class="blog-post__title">
+                <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
+              </h4>
+              <div class="rte">
+                {{ 'homepage.onboarding.blog_excerpt' | t }}
+              </div>
+              <p class="blog-post__meta">
+                <a href="{{ article.url }}">
+                  {{ 'blogs.article.read_more' | t }}
+                  {% include 'icon-arrow-right' %}
+                </a>
+              </p>
+            </div>
+          </div>
+        {% endfor %}
       {% endfor %}
     </div>
 

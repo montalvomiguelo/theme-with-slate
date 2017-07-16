@@ -22,7 +22,7 @@
 
     <div class="grid grid--uniform">
       {% for block in section.blocks limit: section.blocks.size %}
-        <div class="grid__item medium-up--one-third" {{ block.shopify_attributes }}>
+        <div class="grid__item medium--one-half large-up--one-third" {{ block.shopify_attributes }}>
           {%- assign collection = collections[block.settings.collection] -%}
           {% include 'collection-item' %}
         </div>

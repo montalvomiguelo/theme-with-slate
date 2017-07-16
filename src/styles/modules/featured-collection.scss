@@ -1,0 +1,12 @@
+.featured-collection {
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 1em;
+
+  .slick-prev {
+    left: $grid-gutter-mobile;
+
+    @include media-query($medium-up) {
+      left: $grid-gutter;
+    }
+  }
+}

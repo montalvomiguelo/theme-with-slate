@@ -15,6 +15,7 @@ window.theme = window.theme || {};
 // =require sections/product.js
 // =require sections/header-section.js
 // =require sections/footer-section.js
+// =require sections/featured-collection-section.js
 
 /*================ Modules ================*/
 // =require modules/site-header.js
@@ -32,6 +33,7 @@ $(document).ready(function() {
   sections.register('product', theme.Product);
   sections.register('header', theme.HeaderSection);
   sections.register('footer', theme.FooterSection);
+  sections.register('featured-collection-section', theme.FeaturedCollectionSection);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

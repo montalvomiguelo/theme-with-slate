@@ -1,52 +1,42 @@
-{% if section.settings.title != blank %}
-  <h2>{{ section.settings.title | escape }}</h2>
-{% endif %}
-
-{%- assign collection = collections[section.settings.collection] -%}
-
-{% for product in collection.products limit: 6 %}
-  <a href="{{ product.url | within: collection }}">
-    {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
-    <p>{{ product.title }}</p>
-  </a>
-
-  <p>
-    {% if product.compare_at_price > product.price %}
-
-      {% if product.price_varies %}
-        {%- assign sale_price = product.price | money -%}
-        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-      {% else %}
-        {{ 'products.product.on_sale' | t }}
-        {{ product.price | money }}
+<div data-section-id="{{ section.id }}" data-section-type="featured-collection-section">
+  <div class="featured-collection">
+    <div class="wrapper">
+      {% if section.settings.title != blank %}
+        <div class="section-header">
+          <h2 class="section-header__title">{{ section.settings.title | escape }}</h2>
+        </div>
       {% endif %}
 
-    {% else %}
+      {%- assign collection = collections[section.settings.collection] -%}
 
-      {% if product.price_varies %}
-        {%- assign price = product.price | money -%}
-        {{ 'products.product.from_text_html' | t: price: price }}
-      {% else %}
-        {{ product.price | money }}
-      {% endif %}
+      <div id="FeaturedCollectionSlider-{{ section.id }}" class="grid featured-collection__slider">
+        {% for product in collection.products limit: 6 %}
+          <div class="grid__item">
+            {% include 'product-grid-item' %}
+          </div>
+        {% else %}
 
-    {% endif %}
-  </p>
-{% else %}
+          {% for i in (1..6) %}
+            <div class="grid__item">
+              <div class="product-card">
+                <a href="#">
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
 
-  {% for i in (1..6) %}
-    <a href="#">
-      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                  <p class="product-card__title">
+                    {{ 'homepage.onboarding.product_title' | t }}
+                  </p>
+                </a>
 
-      <p>
-        {{ 'homepage.onboarding.product_title' | t }}
-      </p>
-    </a>
-
-    <p>{{ 1999 | money }}</p>
-  {% endfor %}
-{% endfor %}
+                <p class="product-card__price">{{ 1999 | money }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% schema %}
   {

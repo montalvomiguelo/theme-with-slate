@@ -37,6 +37,10 @@
     @include media-query($medium-up) {
       display: inline-block;
     }
+
+    @include media-query($medium-down) {
+      width: 6rem;
+    }
   }
 }
 

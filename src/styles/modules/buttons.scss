@@ -9,16 +9,22 @@
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: $border-radius;
-  padding: .618em 1em;
+  padding: $input-padding-top-bottom-small $input-padding-left-right-small;
   background-color: $color-primary;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: normal;
+  font-weight: $font-weight-header;
+  text-transform: uppercase;
+  font-size: $font-size-base - 2;
+
+  @include media-query($medium-up) {
+    padding: $input-padding-top-bottom $input-padding-left-right;
+  }
 
   &:hover,
   &:focus {
     background-color: $color-secondary;
+    color: white;
   }
 
   .icon-arrow-right,

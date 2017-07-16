@@ -1,0 +1,64 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign variantCount = product.variants | size %}
+
+<div class="product-card">
+  <a class="product-card__image" href="{{ product.url | within: collection }}">
+    {{ product.featured_image.src | img_url: '600x600' | img_tag: product.title }}
+    <p class="product-card__title">{{ product.title }}</p>
+    <span class="product-card__quickview">
+      {% include 'icon-quickview' %}
+      {{ 'products.product.quickview' | t }}
+    </span>
+  </a>
+
+  <p class="product-card__price">
+    {% if product.compare_at_price > product.price %}
+
+      {% if product.price_varies %}
+        {%- assign sale_price = product.price | money -%}
+        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+      {% else %}
+        {{ 'products.product.on_sale' | t }}
+        {{ product.price | money }}
+      {% endif %}
+
+    {% else %}
+
+      {% if product.price_varies %}
+        {%- assign price = product.price | money -%}
+        {{ 'products.product.from_text_html' | t: price: price }}
+      {% else %}
+        {{ product.price | money }}
+      {% endif %}
+
+    {% endif %}
+  </p>
+
+  <form action="/cart/add" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+    {% if sold_out %}
+      <button class="btn" type="submit" value="Submit" disabled>
+        {{ 'products.product.sold_out' | t }}
+      </button>
+    {% else %}
+      {% if variantCount > 1 %}
+        <a class="btn" href="{{ product.url | within: collection }}" title="{{ product.title }}">
+          {{ 'products.product.select_options' | t }}
+        </a>
+      {% else %}
+        <button class="btn" type="submit" value="Submit">
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+      {% endif %}
+    {% endif %}
+    </form>
+</div>
