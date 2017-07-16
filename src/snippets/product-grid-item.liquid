@@ -14,7 +14,7 @@
   <a class="product-card__image" href="{{ product.url | within: collection }}">
     {{ product.featured_image.src | img_url: '600x600' | img_tag: product.title }}
     <p class="product-card__title">{{ product.title }}</p>
-    <span class="product-card__quickview">
+    <span class="product-card__quickview" data-handle="{{ product.handle }}">
       {% include 'icon-quickview' %}
       {{ 'products.product.quickview' | t }}
     </span>

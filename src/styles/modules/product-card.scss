@@ -50,6 +50,15 @@
   border: 1px solid $color-primary;
   color: $color-body-text;
 
+  &:after {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   .product-card__image:hover & {
     @include media-query($large-up) {
       display: block;

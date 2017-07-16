@@ -1,6 +1,10 @@
 theme.FeaturedCollectionSection = (function(){
   'use strict';
 
+  var selectors = {
+    productCard: '.product-card'
+  };
+
   var breakpoints = {
     medium: 750,
     large: 990
@@ -43,10 +47,13 @@ theme.FeaturedCollectionSection = (function(){
     var $slider = $(this.slider);
 
     $slider.slick(defaults);
+
+    this.$container.on('click.featuredCollection', selectors.productCard, theme.ProductCard.onClick);
   }
 
   FeaturedCollection.prototype.onUnload = function() {
     $(this.slider).slick('unslick');
+    this.$container.off('.featuredCollection');
   }
 
   return FeaturedCollection;
