@@ -263,7 +263,9 @@
       "from_text_html": "From {{ price }}",
       "from": "From",
       "quantity": "Quantity",
-      "add_to_cart": "Add to Cart"
+      "add_to_cart": "Add to Cart",
+      "category": "Category",
+      "product_type": "Product type"
     }
   },
   "gift_cards": {
