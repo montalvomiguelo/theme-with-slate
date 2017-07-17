@@ -1,6 +1,5 @@
 .hero-image {
   position: relative;
-  height: 100%;
 
   .wrapper {
     position: absolute;
@@ -9,24 +8,13 @@
     top: 0;
     bottom: 0;
   }
-}
 
-.hero-image__placeholder-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.hero-image__background {
-  height: 100%;
-  background-size: cover;
-  background-position: center;
+  img {
+    width: 100%;
+  }
 }
 
 .hero-image__content {
-  @include vertical-align(absolute);
   color: white;
   left: 0;
   margin-left: auto;
@@ -35,8 +23,12 @@
   padding: 0 1rem;
   right: 0;
   text-align: center;
+  position: absolute;
+  bottom: 16%;
 
-  @include media-query($large-up) {
+  @include media-query($medium-up) {
+    bottom: auto;
+    @include vertical-align(absolute);
     left: auto;
     margin-left: 0;
     margin-right: 0;
@@ -64,6 +56,7 @@
 
   p {
     margin-top: $phi * 1em;
+    margin-bottom: 0;
 
     @include media-query($large-up) {
       font-size: $font-size-h4;
@@ -76,7 +69,7 @@
 
   a {
     width: 100%;
-    margin-top: $phi * 1em;
+    margin-top: $phi * 1rem;
     max-width: 16em;
   }
 
@@ -91,7 +84,7 @@
 }
 
 .hero-image__content--center {
-  @include media-query($large-up) {
+  @include media-query($medium-up) {
     text-align: center;
     left: 0;
     right: 0;
@@ -101,14 +94,14 @@
 }
 
 .hero-image__content--right {
-  @include media-query($large-up) {
+  @include media-query($medium-up) {
     text-align: right;
     right: $gutter;
   }
 }
 
 .hero-image__content--left {
-  @include media-query($large-up) {
+  @include media-query($medium-up) {
     left: $gutter;
     text-align: left;
   }

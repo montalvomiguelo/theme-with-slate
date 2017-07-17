@@ -3,8 +3,9 @@ theme.Slideshow = (function() {
 
   var defaults = {
     arrows: false,
-    dots: true
-  }
+    dots: true,
+    adaptiveHeight: true
+  };
 
   function Slideshow(container) {
     this.$container = $(container);

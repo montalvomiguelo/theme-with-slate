@@ -21,25 +21,10 @@
   </a>
 
   <p class="product-card__price">
-    {% if product.compare_at_price > product.price %}
-
-      {% if product.price_varies %}
-        {%- assign sale_price = product.price | money -%}
-        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-      {% else %}
-        {{ 'products.product.on_sale' | t }}
-        {{ product.price | money }}
-      {% endif %}
-
-    {% else %}
-
-      {% if product.price_varies %}
-        {%- assign price = product.price | money -%}
-        {{ 'products.product.from_text_html' | t: price: price }}
-      {% else %}
-        {{ product.price | money }}
-      {% endif %}
-
+    {% if product.price_varies %}{{ 'products.product.from' | t }}{% endif %}
+    {{ product.price | money }}
+    {% if on_sale %}
+      <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
     {% endif %}
   </p>
 

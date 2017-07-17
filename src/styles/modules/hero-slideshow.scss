@@ -1,20 +1,2 @@
 .hero-slideshow {
-  height: 800px;
-
-  @include media-query($medium-up) {
-    height: 600px;
-  }
-
-  @include media-query($widescreen) {
-    height: 800px;
-  }
-
-  @media screen and (min-width: 1600px) {
-    height: 900px;
-  }
-
-  .slick-list,
-  .slick-track {
-    height: 100%;
-  }
 }

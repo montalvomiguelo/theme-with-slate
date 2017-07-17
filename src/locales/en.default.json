@@ -261,6 +261,7 @@
       "on_sale": "On Sale",
       "on_sale_from_html": "On Sale from {{ price }}",
       "from_text_html": "From {{ price }}",
+      "from": "From",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart"
     }
