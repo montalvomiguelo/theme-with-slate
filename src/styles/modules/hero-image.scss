@@ -63,6 +63,10 @@
   p {
     margin-top: $phi * 1em;
 
+    @include media-query($large-up) {
+      font-size: $font-size-h4;
+    }
+
     strong {
       color: $color-primary;
     }
