@@ -21,7 +21,8 @@
 
 .hero-image__background {
   height: 100%;
-  background-size: cover !important;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-image__content {
@@ -79,6 +80,14 @@
     max-width: 16em;
   }
 
+}
+
+.hero-image__content--light {
+  color: white;
+}
+
+.hero-image__content--dark {
+  color: $color-headlines;
 }
 
 .hero-image__content--center {

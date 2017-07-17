@@ -6,11 +6,11 @@
           {% if block.settings.image_large != blank and block.settings.image_small != blank %}
             <style>
               .hero-image--{{ block.id }} .hero-image__background {
-                background: url({{ block.settings.image_small | img_url: '1000x' }});
+                background-image: url({{ block.settings.image_small | img_url: '1000x' }});
               }
-              @media screen and (min-width: 990px) {
+              @media screen and (min-width: 750px) {
                 .hero-image--{{ block.id }} .hero-image__background {
-                  background: url({{ block.settings.image_large | img_url: '1600x' }});
+                  background-image: url({{ block.settings.image_large | img_url: '1600x' }});
                 }
               }
             </style>
@@ -22,7 +22,7 @@
             </div>
           {% endif %}
           <div class="wrapper">
-            <div class="hero-image__content hero-image__content--{{ block.settings.alignment }}">
+            <div class="hero-image__content hero-image__content--{{ block.settings.alignment }} hero-image__content--{{ block.settings.text_color }}">
               <h6>{{ block.settings.title }}</h6>
               {{ block.settings.subheading }}
               {% if block.settings.link != blank and block.settings.button != blank %}
@@ -88,6 +88,22 @@
               }
             ],
             "default":   "left"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "dark",
+            "options": [
+              {
+                "value": "light",
+                "label": "Light"
+              },
+              {
+                "value": "dark",
+                "label": "Dark"
+              }
+            ]
           },
           {
             "type": "image_picker",
