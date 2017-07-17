@@ -1,0 +1,119 @@
+<div data-section-id="{{ section.id }}" data-section-type="slideshow">
+  <div id="HeroSlideshow-{{ section.id }}" class="hero-slideshow">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <div class="hero-image hero-image--{{ block.id }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image_large != blank and block.settings.image_small != blank %}
+            <style>
+              .hero-image--{{ block.id }} .hero-image__background {
+                background: url({{ block.settings.image_small | img_url: '1000x' }});
+              }
+              @media screen and (min-width: 990px) {
+                .hero-image--{{ block.id }} .hero-image__background {
+                  background: url({{ block.settings.image_large | img_url: '1600x' }});
+                }
+              }
+            </style>
+            <div class="hero-image__background"></div>
+          {% else %}
+            <div class="hero-image__placeholder-background">
+              {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+              {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+          <div class="wrapper">
+            <div class="hero-image__content hero-image__content--{{ block.settings.alignment }}">
+              <h6>{{ block.settings.title }}</h6>
+              {{ block.settings.subheading }}
+              {% if block.settings.link != blank and block.settings.button != blank %}
+                <a class="btn" href="{{ block.settings.link }}">{{ block.settings.button }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image slide"
+          },
+          {
+            "type": "richtext",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Tell your brand's story images",
+            "default": "<p>Tell your brand's storyt hrough images</p>"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Button text",
+            "default": "Shop now"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Slide link"
+          },
+          {
+            "type":      "select",
+            "id":        "alignment",
+            "label":     "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default":   "left"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_small",
+            "label": "Image small"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_large",
+            "label": "Image large"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slideshow",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

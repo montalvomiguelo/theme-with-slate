@@ -1,0 +1,9 @@
+.hero-slideshow {
+  height: 600px;
+  position: relative;
+
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+}
