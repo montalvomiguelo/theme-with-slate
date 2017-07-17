@@ -26,15 +26,15 @@
     background: lighten($color-border, 3.5%);
   }
 </style>
-{% unless section.settings.promo_bar_text == blank %}
-  <div class="promo-bar">
-    <div class="wrapper">
-      {{ section.settings.promo_bar_text }}
-    </div>
-  </div>
-{% endunless %}
 <div data-section-id="{{ section.id }}" data-section-type="header">
   <header class="site-header" role="banner">
+    {% unless section.settings.promo_bar_text == blank %}
+      <div class="promo-bar">
+        <div class="wrapper">
+          {{ section.settings.promo_bar_text }}
+        </div>
+      </div>
+    {% endunless %}
     <div class="wrapper">
       <div class="site-header__left">
         {% if template.name == 'index' %}

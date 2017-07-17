@@ -186,7 +186,7 @@ theme.SiteHeader = (function() {
     }
 
     var scroll = cache.$window.scrollTop();
-    var threshold = cache.$siteHeader.outerHeight() + cache.$promoBar.outerHeight();
+    var threshold = cache.$siteHeader.outerHeight();
 
     if (scroll > threshold) {
       setStickyHeader();
@@ -200,7 +200,13 @@ theme.SiteHeader = (function() {
       return;
     }
 
-    cache.$siteHeader.addClass(config.activeHeaderStickyClass);
+    var offset = cache.$siteHeader.outerHeight();
+
+    setTimeout(function() {
+      cache.$siteHeader.addClass(config.activeHeaderStickyClass);
+      cache.$body.css('padding-top', offset);
+    }, 250);
+
   }
 
   function unsetStickyHeader() {
@@ -209,6 +215,7 @@ theme.SiteHeader = (function() {
     }
 
     cache.$siteHeader.removeClass(config.activeHeaderStickyClass);
+    cache.$body.css('padding-top', '');
   }
 
 
