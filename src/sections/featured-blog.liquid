@@ -10,10 +10,15 @@
     </div>
 
     {% assign blog = blogs[section.settings.blog] %}
+    {% assign grid_item_width = 'medium-up--one-half' %}
+
+    {% if section.settings.post_limit == '3' %}
+      {% assign grid_item_width = 'medium--one-half large-up--one-third' %}
+    {% endif %}
 
     <div class="grid">
-      {% for article in blog.articles limit:3 %}
-        <div class="grid__item medium--one-half large-up--one-third">
+      {% for article in blog.articles limit:section.settings.post_limit %}
+        <div class="grid__item {{ grid_item_width }}">
           <div class="blog-post">
             {% if article.image %}
               <figure classs="blog-post__image">
@@ -92,6 +97,22 @@
         "label": "Blog"
       },
       {
+        "type": "select",
+        "id": "post_limit",
+        "label": "Posts",
+        "default": "2",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
       "type": "color",
       "id": "background_color",
       "label": "Background color",
@@ -103,7 +124,8 @@
         "name": "Blog posts",
         "category": "Blog",
         "settings": {
-          "blog": "News"
+          "blog": "News",
+          "post_limit": "2"
         }
       }
     ]

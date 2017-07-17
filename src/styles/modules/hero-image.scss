@@ -50,6 +50,7 @@
     font-size: $font-size-h1;
     margin-bottom: 0;
     margin-top: 0;
+    font-weight: $font-weight-normal;
 
     @include media-query($medium-up) {
       font-size: $font-size-giga;
