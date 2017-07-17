@@ -1,7 +1,7 @@
 .hero-slideshow {
   height: 800px;
 
-  @include media-query($large-up) {
+  @include media-query($medium-up) {
     height: 600px;
   }
 
