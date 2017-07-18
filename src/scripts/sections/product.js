@@ -15,6 +15,7 @@ theme.Product = (function() {
     comparePriceText: '[data-compare-text]',
     originalSelectorId: '[data-product-select]',
     priceWrapper: '[data-price-wrapper]',
+    imageWrapper: '[data-image-wrapper]',
     productFeaturedImage: '[data-product-featured-image]',
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
@@ -46,6 +47,8 @@ theme.Product = (function() {
     slate.Image.preload(this.productSingleObject.images, this.settings.imageSize);
 
     this.initVariants();
+    this.initImagesSwitch();
+    this.productImageZoom();
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -67,6 +70,44 @@ theme.Product = (function() {
       this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
       this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
+    },
+
+    initImagesSwitch: function() {
+      if (!$(selectors.productThumbs).length) {
+        return;
+      }
+
+      var self = this;
+
+      $(selectors.productThumbs).on('click', function(evt) {
+        evt.preventDefault();
+
+        var $el = $(this);
+        var imageSrc = $el.attr('href');
+
+        self.switchImage(imageSrc);
+      });
+    },
+
+    productImageZoom: function() {
+      if (!$(selectors.imageWrapper).length) {
+        return;
+      }
+
+      // Destroy zoom (in case it was already set), then set it up again
+      $(selectors.imageWrapper).trigger('zoom.destroy');
+
+      $(selectors.imageWrapper).zoom({
+        url: $(selectors.productFeaturedImage).data('zoom')
+      });
+    },
+
+    switchImage: function(imageSrc) {
+      $(selectors.productFeaturedImage)
+        .attr('src', imageSrc)
+        .data('zoom', imageSrc);
+
+      this.productImageZoom();
     },
 
     /**

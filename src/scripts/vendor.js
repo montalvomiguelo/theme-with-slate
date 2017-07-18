@@ -9,6 +9,11 @@
 // =require vendor/jquery-2.2.3.min.js
 
 /*!
+ * jquery.zoom.min.js
+ */
+// =require vendor/jquery.zoom.min.js
+
+/*!
  * slick.min.js
  */
 // =require vendor/slick.min.js

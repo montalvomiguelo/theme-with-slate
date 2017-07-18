@@ -14,14 +14,14 @@
       <div class="grid__item medium-up--one-half">
 
         {% if product.images.size < 2 %}
-          <div class="product-single__photos" id="ProductPhoto">
-            <img src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+          <div class="product-single__photos" data-image-wrapper>
+            <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image data-zoom="{{ featured_image | img_url: '1024x' }}">
           </div>
 
         {% else %}
           <div class="grid">
-            <div class="grid__item four-fifths product-single__photos" id="ProductPhoto">
-              <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            <div class="grid__item four-fifths product-single__photos" data-image-wrapper>
+              <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image data-zoom="{{ featured_image | img_url: '1024x' }}">
             </div>
 
             <div class="grid__item one-fifth">
