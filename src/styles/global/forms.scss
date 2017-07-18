@@ -7,8 +7,11 @@ input,
 textarea,
 select {
   border: 1px solid $color-border;
-  border-radius: 0;
+  background-color: $color-body;
+  color: $color-body-text;
   max-width: 100%;
+  line-height: 1.2;
+  border-radius: 0;
 
   &:focus {
     // You should add some focus styles
@@ -19,6 +22,12 @@ select {
     background-color: $color-disabled;
     border-color: $color-disabled-border;
   }
+}
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 
 textarea {
@@ -33,12 +42,21 @@ select {
     image: url($svg-select-icon);
     repeat: no-repeat;
     position: right 10px center;
-    color: transparent;
   }
+  line-height: 1.2;
   padding-right: 28px;
   text-indent: 0.01px;
   text-overflow: '';
   cursor: pointer;
+  padding-top: $input-padding-top-bottom-small;
+  padding-left: $input-padding-left-right-small;
+  padding-bottom: $input-padding-top-bottom-small;
+
+  @include media-query($medium-up) {
+    padding-top: $input-padding-top-bottom;
+    padding-left: $input-padding-left-right;
+    padding-bottom: $input-padding-top-bottom;
+  }
 
   /*================ Hide the svg arrow in IE9 ================*/
   .ie9 & {

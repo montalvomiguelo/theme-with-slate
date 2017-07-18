@@ -11,7 +11,7 @@
     <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
     <div class="grid product-single">
-      <div class="grid__item large-up--one-half">
+      <div class="grid__item medium-up--one-half">
 
         {% if product.images.size < 2 %}
           <div class="product-single__photos" id="ProductPhoto">
@@ -21,15 +21,15 @@
         {% else %}
           <div class="grid">
             <div class="grid__item four-fifths product-single__photos" id="ProductPhoto">
-              <img src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+              <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
             </div>
 
             <div class="grid__item one-fifth">
               <ul class="grid product-single__thumbnails" id="ProductThumbs">
                 {% for image in product.images %}
                   <li class="grid__item">
-                    <a class="product-single__thumbnail" href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
-                      <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+                    <a class="product-single__thumbnail" href="{{ image.src | img_url: '1024x' }}" data-product-single-thumbnail>
+                      <img src="{{ image.src | img_url: '160x' }}" alt="{{ image.alt | escape }}">
                     </a>
                   </li>
                 {% endfor %}
@@ -41,15 +41,30 @@
 
       </div>
 
-      <div class="grid__item large-up--one-half product-single__description">
-        <h1>{{ product.title }}</h1>
+      <div class="grid__item medium-up--one-half">
+        <h1 class="product-single__title">{{ product.title }}</h1>
+
+        <div class="product-single__meta">
+          {% if product.collections.size > 0 %}
+            <p>
+              <strong>{{ 'products.product.category' | t }}</strong>
+              {% for collection in product.collections %}{{ collection.title }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+            </p>
+          {% endif %}
+          {% unless product.type == blank %}
+            <p>
+              <strong>{{ 'products.product.product_type' | t }}</strong>
+              {{ product.type }}
+            </p>
+          {% endunless %}
+        </div>
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           <meta itemprop="priceCurrency" content="{{ shop.currency }}">
           <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
           <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
-          <div data-price-wrapper>
+          <div class="product-single__prices" data-price-wrapper>
             <span data-product-price>
               {{ current_variant.price | money }}
             </span>
@@ -64,34 +79,16 @@
             {% endif %}
           </div>
 
-          <div class="product-single__meta">
-            {% if product.collections.size > 0 %}
-              <p>
-                <strong>{{ 'products.product.category' | t }}</strong>
-                {% for collection in product.collections %}{{ collection.title }}{% unless forloop.last %}, {% endunless %}{% endfor %}
-              </p>
-            {% endif %}
-            {% unless product.type == blank %}
-              <p>
-                <strong>{{ 'products.product.product_type' | t }}</strong>
-                {{ product.type }}
-              </p>
-            {% endunless %}
-          </div>
-
-          <div class="rte">
-            {{ product.description }}
-          </div>
-
-          <form action="/cart/add" method="post" enctype="multipart/form-data">
+          <form class="product-form" action="/cart/add" method="post" enctype="multipart/form-data">
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
-                <div class="selector-wrapper js">
+                <div class="selector-wrapper js product-form__item">
                   <label for="SingleOptionSelector-{{ forloop.index0 }}">
                     {{ option.name }}
                   </label>
 
                   <select
+                    class="product-form__input"
                     id="SingleOptionSelector-{{ forloop.index0 }}"
                     data-single-option-selector
                     data-index="option{{ option.position }}">
@@ -118,24 +115,32 @@
               {% endfor %}
             </select>
 
-            <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-            <input type="number" id="Quantity" name="quantity" value="1" min="1">
+            <div class="product-form__item product-form__item--quantity">
+              <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+              <input class="product-form__input" type="number" id="Quantity" name="quantity" value="1" min="1">
+            </div>
 
-
-            <button
-              type="submit"
-              name="add"
-              data-add-to-cart
-              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-                <span data-add-to-cart-text>
-                  {% if current_variant.available %}
-                    {{ 'products.product.add_to_cart' | t }}
-                  {% else %}
-                    {{ 'products.product.sold_out' | t }}
-                  {% endif %}
-                </span>
-            </button>
+            <div class="product-form__item product-form__item--submit">
+              <button
+                class="btn product-form__cart-submit"
+                type="submit"
+                name="add"
+                data-add-to-cart
+                {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                  <span data-add-to-cart-text>
+                    {% if current_variant.available %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+              </button>
+            </div>
           </form>
+
+          <div class="product-single__description rte">
+            {{ product.description }}
+          </div>
 
           {% if section.settings.show_share_buttons %}
             {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}

@@ -1,0 +1,41 @@
+.product-form {
+  @include display-flexbox();
+  @include flex-wrap(wrap);
+  @include align-items(flex-end);
+  width: auto;
+  margin: 0 -5px -10px;
+}
+
+.product-form__item {
+  @include flex(1 1 200px);
+  margin-bottom: 10px;
+  padding: 0 5px;
+
+  label {
+    display: block;
+  }
+}
+
+.product-form__item--quantity {
+  @include flex(0 0 100px);
+}
+
+.product-form__item--submit {
+  @include flex-basis(200px);
+}
+
+.product-form__input {
+  display: block;
+  width: 100%;
+}
+
+.product-form__cart-submit {
+  display: block;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  @include media-query($medium-up) {
+    max-width: 16rem;
+  }
+}
