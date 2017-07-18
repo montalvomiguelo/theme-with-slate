@@ -20,7 +20,8 @@ theme.Product = (function() {
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
-    singleOptionSelector: '[data-single-option-selector]'
+    singleOptionSelector: '[data-single-option-selector]',
+    numInputs: 'input[type="number"]'
   };
 
   /**
@@ -49,6 +50,7 @@ theme.Product = (function() {
     this.initVariants();
     this.initImagesSwitch();
     this.productImageZoom();
+    this.initQtySelector();
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -108,6 +110,12 @@ theme.Product = (function() {
         .data('zoom', imageSrc);
 
       this.productImageZoom();
+    },
+
+    initQtySelector: function() {
+      this.$container.find(selectors.numInputs).each(function(i, el) {
+        new QtySelector($(el));
+      });
     },
 
     /**
@@ -170,6 +178,9 @@ theme.Product = (function() {
       var sizedImgUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.imageSize);
 
       $(selectors.productFeaturedImage, this.$container).attr('src', sizedImgUrl);
+
+      this.switchImage(sizedImgUrl);
+      this.productImageZoom();
     },
 
     /**

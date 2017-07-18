@@ -74,5 +74,21 @@
 
   {% section 'footer' %}
 
+  <script id="JsQty" type="text/template">
+  {% raw %}
+    <div class="js-qty">
+      <button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="{{key}}" data-qty="{{itemMinus}}">
+        {% endraw %}{% include 'icon-minus' %}{% raw %}
+        <span class="icon-fallback-text" aria-hidden="true">-</span>
+      </button>
+      <input type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
+      <button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="{{key}}" data-qty="{{itemAdd}}">
+        {% endraw %}{% include 'icon-plus' %}{% raw %}
+        <span class="icon-fallback-text" aria-hidden="true">+</span>
+      </button>
+    </div>
+  {% endraw %}
+  </script>
+
 </body>
 </html>

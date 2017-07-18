@@ -12,12 +12,11 @@
   margin-top: 1rem;
 
   p {
-    margin: 0 1em .5em 0;
+    margin: 0 1em 0 0;
     display: inline-block;
 
     strong {
       font-weight: $font-weight-normal;
-      text-transform: uppercase;
       color: $color-secondary;
       &:after {
         content: ": ";

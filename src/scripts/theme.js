@@ -19,6 +19,9 @@ window.theme = window.theme || {};
 // =require sections/slideshow.js
 
 /*================ Modules ================*/
+// =require global/qty-selector.js
+
+/*================ Modules ================*/
 // =require modules/site-header.js
 // =require modules/mobile-nav.js
 // =require modules/nav-drawer.js
