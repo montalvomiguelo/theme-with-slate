@@ -3,6 +3,10 @@
 
 .product-single__description {
   margin-top: $gutter;
+
+  .panel-group {
+    margin-top: $phi * 1em;
+  }
 }
 
 .product-single__meta {
