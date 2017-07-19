@@ -24,6 +24,7 @@
 
 /*================ VENDOR ================*/
 @import url('vendor/slick.scss');
+@import url('vendor/component-animations.scss');
 
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
@@ -63,5 +64,4 @@
 @import url('modules/social-sharing.scss');
 @import url('modules/product-form.scss');
 @import url('modules/js-qty.scss');
-@import url('modules/accordion.scss');
-@import url('modules/collapse.scss');
+@import url('modules/panel.scss');
