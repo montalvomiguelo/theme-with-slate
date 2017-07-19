@@ -34,8 +34,10 @@
   width: 100%;
   padding-left: 5px;
   padding-right: 5px;
+}
 
-  @include media-query($medium-up) {
+@include media-query($medium-up) {
+  .product-form__cart-submit--small {
     max-width: 16rem;
   }
 }

@@ -122,7 +122,7 @@
 
             <div class="product-form__item product-form__item--submit">
               <button
-                class="btn product-form__cart-submit"
+                class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}"
                 type="submit"
                 name="add"
                 data-add-to-cart
