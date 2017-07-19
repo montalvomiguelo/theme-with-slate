@@ -25,6 +25,12 @@
 // =require vendor/handlebars.min.js
 
 /*!
+ * bootstrap-transition.min.js
+ *
+ */
+// =require vendor/bootstrap-transition.min.js
+
+/*!
  * bootstrap-collapse.min.js
  *
  */
