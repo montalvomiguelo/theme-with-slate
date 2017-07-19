@@ -139,7 +139,7 @@
           </form>
 
           <div class="product-single__description rte">
-            {{ product.description }}
+            {% include 'shortcode' load: product.description %}
           </div>
 
           {% if section.settings.show_share_buttons %}

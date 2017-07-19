@@ -1,0 +1,10 @@
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  @include prefix(transition, height .3s ease, webkit moz spec);
+
+  &.in {
+    height: auto;
+  }
+}

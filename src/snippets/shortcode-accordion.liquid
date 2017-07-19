@@ -1,0 +1,27 @@
+{% capture accordion %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture accordionTitle %}{% include 'shortcode-render' render:'title' default:'Accordion title' %}{% endcapture %}
+{% capture accordionActive %}{% include 'shortcode-render' render:'active' default:'0' %}{% endcapture %}
+{% case accordion %}
+  {% when 'new accordions' %}
+    {% capture shortcodeId %}{{shortcodeId}}-{{ 'now' | date: "%N" }}{% endcapture %}
+    <div class="accordion" id="accordion-{{shortcodeId | split: '-' | last}}">
+  {% when 'end accordions' %}
+    {% capture lastTime %}-{{shortcodeId | split: '-' | last}}{% endcapture %}
+    {% capture shortcodeId %}{{shortcodeId | remove: lastTime}}{% endcapture %}
+    </div>
+  {% when 'new accordion' %}
+    <div class="accordion-group">
+      {% capture headingId %}{{ 'now' | date: "%N" }}{% endcapture %}
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-{{shortcodeId | split: '-' | last}}" href="#collapse{{headingId}}">
+          {% if accordionTitle != '' %}{{accordionTitle}}{% endif %}
+        </a>
+      </div>
+      <div id="collapse{{headingId}}" class="accordion-body collapse{% if accordionActive == '1' %} in{% endif %}">
+        <div class="accordion-inner">
+    {% when 'end accordion' %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+{% endcase %}
