@@ -5,6 +5,13 @@
 .panel-body {
   @include clearfix();
   padding-bottom: $phi * .5em;
+
+  >p:first-child,
+  >ul:first-child
+  >h4:first-child,
+  >h5:first-child {
+    margin-top: 0;
+  }
 }
 
 .panel-heading {
