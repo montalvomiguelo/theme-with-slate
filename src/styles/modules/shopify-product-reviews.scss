@@ -1,0 +1,58 @@
+.shopify-product-reviews {
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+  background-position-y: top;
+  background-repeat: repeat-x;
+
+  #shopify-product-reviews {
+    margin: 0;
+
+    .btn {
+      line-height: 1.5;
+      width: 100%;
+      max-width: 16rem;
+    }
+  }
+
+  .spr-header-title {
+    font-weight: $font-weight-normal;
+    font-family: $font-stack-header;
+    font-size: $font-size-giga;
+
+    @include media-query($small) {
+      font-size: $font-size-h1;
+    }
+  }
+
+  .spr-form-label {
+    font-size: $font-size-base;
+  }
+
+  .spr-review-header-byline,
+  .spr-review-reportreview {
+    font-size: $font-size-small;
+    font-style: normal;
+  }
+
+
+  .spr-review-content-body {
+    font-size: 1rem;
+  }
+
+  .spr-review-header-title {
+    color: $color-secondary;
+    font-size: $font-size-base;
+  }
+
+  .spr-container {
+    border-color: $color-border;
+  }
+
+  .spr-review, .spr-form {
+    border-color: $color-border;
+  }
+
+  .spr-icon {
+    color: $color-primary;
+  }
+}

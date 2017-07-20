@@ -1,3 +1,15 @@
+<style>
+  .product-section,
+  .shopify-product-reviews {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  {% if section.settings.background_image != '' %}
+    .shopify-product-reviews {
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
+    }
+  {% endif %}
+</style>
 <div class="product-section" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
   <div class="wrapper">
 
@@ -157,6 +169,15 @@
       {% endunless %}
     </div>
   </div>
+
+</div>
+
+{% include 'related-products' %}
+
+<div class="shopify-product-reviews">
+  <div class="wrapper">
+    <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+  </div>
 </div>
 
 {% schema %}
@@ -164,10 +185,15 @@
     "name": "Product pages",
     "settings": [
       {
-        "type": "checkbox",
-        "id": "show_share_buttons",
-        "label": "Show social sharing buttons",
-        "default": true
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Reviews image background"
       }
     ]
   }
