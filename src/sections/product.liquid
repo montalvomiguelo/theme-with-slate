@@ -10,8 +10,11 @@
     }
   {% endif %}
 </style>
+
 <div class="product-section" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
   <div class="wrapper">
+
+  {% include 'breadcrumb' %}
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -184,6 +187,12 @@
   {
     "name": "Product pages",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      },
       {
         "type": "color",
         "id": "background_color",

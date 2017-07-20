@@ -1,5 +1,9 @@
 {
   "general": {
+    "breadcrumbs": {
+      "home": "Home",
+      "home_link_title": "Back to the home page"
+    },
     "accessibility": {
       "skip_to_content": "Skip to content"
     },
