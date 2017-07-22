@@ -42,6 +42,7 @@ theme.QuickView = (function() {
     var isCurrentVariantSalePrice = this.isCurrentVariantSalePrice();
     var productUrl = product.url;
     var hasOnlyDefaultVariant = this.hasOnlyDefaultVariant();
+    var productJson = JSON.stringify(product);
 
     var source = $(selectors.productTemplate).html();
     var template = Handlebars.compile(source);
@@ -62,18 +63,15 @@ theme.QuickView = (function() {
       currentVariant: currentVariant,
       isCurrentVariantSalePrice: isCurrentVariantSalePrice,
       strings: theme.strings,
-      productUrl: productUrl
+      productUrl: productUrl,
+      productJson: productJson
     };
 
     $(selectors.productContainer).html(template(context));
+
+    new theme.Product($(selectors.productContainer));
+
     $(selectors.productModal).modal('show');
-
-    slate.Image.preload(product.images, config.imageSizeOriginal);
-
-    //this.initVariants(product);
-    //this.initImagesSwitch();
-    //this.productImageZoom();
-    //this.initQtySelector();
   };
 
   //https://help.shopify.com/themes/liquid/objects/product#product-selected_or_first_available_variant
