@@ -25,16 +25,22 @@
 // =require vendor/handlebars.min.js
 
 /*!
- * bootstrap-transition.min.js
+ * transition.min.js
  *
  */
-// =require vendor/bootstrap-transition.min.js
+// =require vendor/transition.min.js
 
 /*!
- * bootstrap-collapse.min.js
+ * collapse.min.js
  *
  */
-// =require vendor/bootstrap-collapse.min.js
+// =require vendor/collapse.min.js
+
+/*!
+ * modal.min.js
+ *
+ */
+// =require vendor/modal.min.js
 
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.

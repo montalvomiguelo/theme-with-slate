@@ -12,7 +12,6 @@
 .product-single__meta {
   color: $color-light-body-text;
   font-size: $font-size-small;
-  line-height: normal;
   margin-top: 1rem;
 
   p {
@@ -52,7 +51,6 @@
 
 .product-single__prices {
   font-weight: $font-weight-bold;
-  line-height: normal;
   margin-top: 1rem;
   //margin-bottom: $gutter;
 
@@ -77,6 +75,10 @@
   font-size: $font-size-h4;
   margin-bottom: 0;
   margin-top: 0;
+
+  a {
+    color: inherit;
+  }
 
   @include media-query($medium-up) {
     font-size: $font-size-h3;

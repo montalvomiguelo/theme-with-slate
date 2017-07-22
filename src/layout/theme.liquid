@@ -207,8 +207,16 @@
   {% endraw %}
   </script>
 
-  <div class="wrapper">
-    <div id="ProductContainer"></div>
+  <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div id="ProductContainer" class="modal-body"></div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          {% include 'icon-close' %}
+        </button>
+      </div>
+      </div>
+    </div>
   </div>
 
 </body>

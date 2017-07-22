@@ -3,7 +3,8 @@ theme.QuickView = (function() {
 
   var selectors = {
     productTemplate: '#ProductTemplate',
-    productContainer: '#ProductContainer'
+    productContainer: '#ProductContainer',
+    productModal: '#ProductModal'
   };
 
   var config = {
@@ -65,6 +66,7 @@ theme.QuickView = (function() {
     };
 
     $(selectors.productContainer).html(template(context));
+    $(selectors.productModal).modal('show');
 
     slate.Image.preload(product.images, config.imageSizeOriginal);
 
