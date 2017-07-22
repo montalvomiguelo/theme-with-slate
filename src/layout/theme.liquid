@@ -139,10 +139,10 @@
         </div>
         <div id="PriceWrapper" class="product-single__prices">
           <span id="ProductPrice">{{currentVariantPrice}}</span>
-          {{#if isOnSale}}
+          {{#if isProductOnSale}}
             <span id="CompareText" class="visually-hidden">{{strings.regularPrice}}</span>
             <s id="ComparePrice">
-              {{#if isCompareAtPriceGreaterThanVariantPrice}}
+              {{#if isCurrentVariantSalePrice}}
                 {{compareAtPrice}}
               {{/if}}
             </s>

@@ -260,7 +260,7 @@ theme.ProductCard = (function() {
     evt.stopPropagation();
 
     var handle = $target.data('handle');
-    getProduct(handle);
+    new theme.QuickView(handle);
   }
 
   return {

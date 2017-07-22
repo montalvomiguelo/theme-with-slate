@@ -28,6 +28,7 @@ window.theme = window.theme || {};
 // =require modules/search.js
 // =require modules/site-footer.js
 // =require modules/product-card.js
+// =require modules/quick-view.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
