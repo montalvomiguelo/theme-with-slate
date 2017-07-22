@@ -53,7 +53,7 @@ theme.Product = (function() {
     this.initImagesSwitch();
     this.productImageZoom();
     this.initQtySelector();
-    $(selectors.relatedProducts).on('click.productCard', selectors.productCard, theme.ProductCard.onClick);
+    this.initRelatedProducts();
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -78,13 +78,13 @@ theme.Product = (function() {
     },
 
     initImagesSwitch: function() {
-      if (!$(selectors.productThumbs).length) {
+      if (!$(selectors.productThumbs, this.$container).length) {
         return;
       }
 
       var self = this;
 
-      $(selectors.productThumbs).on('click', function(evt) {
+      $(selectors.productThumbs, this.$container).on('click', function(evt) {
         evt.preventDefault();
 
         var $el = $(this);
@@ -95,20 +95,20 @@ theme.Product = (function() {
     },
 
     productImageZoom: function() {
-      if (!$(selectors.imageWrapper).length) {
+      if (!$(selectors.imageWrapper, this.$container).length) {
         return;
       }
 
       // Destroy zoom (in case it was already set), then set it up again
-      $(selectors.imageWrapper).trigger('zoom.destroy');
+      $(selectors.imageWrapper, this.$container).trigger('zoom.destroy');
 
-      $(selectors.imageWrapper).zoom({
-        url: $(selectors.productFeaturedImage).data('zoom')
+      $(selectors.imageWrapper, this.$container).zoom({
+        url: $(selectors.productFeaturedImage, this.$container).data('zoom')
       });
     },
 
     switchImage: function(imageSrc) {
-      $(selectors.productFeaturedImage)
+      $(selectors.productFeaturedImage, this.$container)
         .attr('src', imageSrc)
         .data('zoom', imageSrc);
 
@@ -119,6 +119,16 @@ theme.Product = (function() {
       this.$container.find(selectors.numInputs).each(function(i, el) {
         new QtySelector($(el));
       });
+    },
+
+    initRelatedProducts: function() {
+      var $relatedProducts = this.$container.siblings(selectors.relatedProducts);
+
+      if (!$relatedProducts.length) {
+        return;
+      }
+
+      $relatedProducts.on('click.productCard', selectors.productCard, theme.ProductCard.onClick);
     },
 
     /**
