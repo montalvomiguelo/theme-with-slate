@@ -54,7 +54,7 @@
   font-weight: $font-weight-bold;
   line-height: normal;
   margin-top: 1rem;
-  margin-bottom: $gutter;
+  //margin-bottom: $gutter;
 
   @include media-query($medium-up) {
     font-size: $font-size-h4;
@@ -80,5 +80,28 @@
 
   @include media-query($medium-up) {
     font-size: $font-size-h3;
+  }
+}
+
+.product-single__view-more {
+  display: block;
+  margin-top: $gutter;
+  font-size: $font-size-small;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  a {
+    &:after {
+      content: "";
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      vertical-align:middle;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Capa_1' data-name='Capa 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:{{ settings.color_secondary | url_encode }};}%3C/style%3E%3C/defs%3E%3Ctitle%3Earrow-next%3C/title%3E%3Cpath class='cls-1' d='M10.44 25a.88.88 0 0 1-.62-1.5l8.5-8.5-8.5-8.5a.88.88 0 0 1 1.24-1.24l9.12 9.12a.88.88 0 0 1 0 1.24l-9.12 9.12a.88.88 0 0 1-.62.26z'/%3E%3C/svg%3E");
+      margin-top: -.2em;
+      margin-left: .5em;
+    }
+    &:hover {
+      color: $color-secondary;
+    }
   }
 }

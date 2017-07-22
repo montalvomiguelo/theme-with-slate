@@ -9,7 +9,8 @@
     },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
-      "page": "Page {{ page }}"
+      "page": "Page {{ page }}",
+      "tagged": "Tagged"
     },
     "404": {
       "title": "404 Page Not Found",
@@ -273,7 +274,8 @@
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
       "category": "Category",
-      "product_type": "Product type"
+      "product_type": "Product type",
+      "view_product_details": "View product details"
     }
   },
   "gift_cards": {

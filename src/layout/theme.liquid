@@ -42,7 +42,11 @@
       strings: {
         addToCart: {{ 'products.product.add_to_cart' | t | json }},
         soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        tagged: {{ 'general.meta.tagged' | t | json }},
+        quantity: {{ 'products.product.quantity' | t | json }},
+        regularPrice: {{ 'products.product.regular_price' | t | json }},
+        viewProductDetails: {{ 'products.product.view_product_details' | t | json }}
       },
       moneyFormat: {{ shop.money_format | json }}
     };
@@ -89,6 +93,123 @@
     </div>
   {% endraw %}
   </script>
+
+  <script id="ProductTemplate" type="text/template">
+  {% raw %}
+    <div class="grid product-single">
+      <div class="grid__item medium-up--one-half">
+        {{#if hasOnlyOneImage}}
+          <div class="product-single__photos" data-image-wrapper>
+            <img id="ProductPhotoImg" src="{{featuredImage}}" alt="{{{productTitle}}}" data-zoom="{{featuredImage}}">
+          </div>
+        {{else}}
+          <div class="grid">
+            <div class="grid__item four-fifths product-single__photos" data-image-wrapper>
+              <img id="ProductPhotoImg" src="{{featuredImage}}" alt="{{{productTitle}}}" data-zoom="{{{featuredImage}}}">
+            </div>
+            <div class="grid__item one-fifth">
+              <ul class="grid product-single__thumbnails" id="ProductThumbs">
+                {{#each productImages}}
+                  <li class="grid__item">
+                    <a class="product-single__thumbnail" href="{{this.original}}" data-product-single-thumbnail>
+                      <img src="{{this.compact}}">
+                    </a>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+      <div class="grid__item medium-up--one-half">
+        <h1 class="product-single__title">
+          <a href="{{productUrl}}">
+            {{productTitle}}
+          </a>
+        </h1>
+        <div class="product-single__meta">
+          {{#if productTags}}
+            <p>
+              <strong>{{strings.tagged}}</strong>
+              {{#productTags}}
+                {{this}}{{#unless @last}}, {{/unless}}
+              {{/productTags}}
+            </p>
+          {{/if}}
+        </div>
+        <div id="PriceWrapper" class="product-single__prices">
+          <span id="ProductPrice">{{currentVariantPrice}}</span>
+          {{#if isOnSale}}
+            <span id="CompareText" class="visually-hidden">{{strings.regularPrice}}</span>
+            <s id="ComparePrice">
+              {{#if isCompareAtPriceGreaterThanVariantPrice}}
+                {{compareAtPrice}}
+              {{/if}}
+            </s>
+          {{/if}}
+        </div>
+        <form class="product-form" action="/cart/add" method="post" enctype="multipart/form-data">
+          {{#unless hasOnlyDefaultVariant}}
+            {{#each productOptions as |option key|}}
+              <div class="selector-wrapper js product-form__item">
+                <label for="SingleOptionSelector-{{@index}}">
+                  {{option.name}}
+                </label>
+                <select
+                  class="product-form__input single-option-selector"
+                  id="SingleOptionSelector-{{@index}}"
+                  data-index="option{{option.position}}">
+                  {{#each option.values}}
+                    <option
+                      value="{{{this.value}}}"
+                      {{#if this.isSelected}}selected="selected"{{/if}}>
+                        {{this.value}}
+                    </option>
+                  {{/each}}
+                </select>
+              </div>
+            {{/each}}
+          {{/unless}}
+          <select name="id" class="no-js" id="productSelect">
+            {{#each productVariants as |variant key|}}
+              <option value="{{variant.id}}">
+                {{variant.title}}
+              </option>
+            {{/each}}
+          </select>
+          <div class="product-form__item product-form__item--quantity">
+            <label for="Quantity{{productId}}">{{strings.quantity}}</label>
+            <input class="product-form__input" type="number" id="Quantity{{productId}}" name="quantity" value="1" min="1">
+          </div>
+          <div class="product-form__item product-form__item--submit">
+            <button
+              id="AddToCart"
+              class="btn product-form__cart-submit{{#if hasOnlyDefaultVariant}} product-form__cart-submit--small{{/if}}"
+              type="submit"
+              name="add"
+              {{#unless currentVariant.available}}disabled="disabled"{{/unless}}>
+                <span id="AddToCartText">
+                  {{# if currentVariant.available}}
+                    {{strings.addToCart}}
+                  {{else}}
+                    {{strings.soldOut}}
+                  {{/if}}
+                </span>
+            </button>
+          </div>
+        </form>
+        <div class="product-single__description rte">{{productDescription}}</div>
+        <p class="product-single__view-more">
+          <a href="{{productUrl}}">{{strings.viewProductDetails}}</a>
+        </p>
+      </div>
+    </div>
+  {% endraw %}
+  </script>
+
+  <div class="wrapper">
+    <div id="ProductContainer"></div>
+  </div>
 
 </body>
 </html>

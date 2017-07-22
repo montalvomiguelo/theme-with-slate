@@ -3,7 +3,7 @@
   @include flex-wrap(wrap);
   @include align-items(flex-end);
   width: auto;
-  margin: 0 -5px -10px;
+  margin: $gutter -5px -10px;
 }
 
 .product-form__item {

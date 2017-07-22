@@ -21,7 +21,9 @@ theme.Product = (function() {
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
     singleOptionSelector: '[data-single-option-selector]',
-    numInputs: 'input[type="number"]'
+    numInputs: 'input[type="number"]',
+    productCard: '.product-card',
+    relatedProducts: '.related-products'
   };
 
   /**
@@ -51,6 +53,7 @@ theme.Product = (function() {
     this.initImagesSwitch();
     this.productImageZoom();
     this.initQtySelector();
+    $(selectors.relatedProducts).on('click.productCard', selectors.productCard, theme.ProductCard.onClick);
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -188,6 +191,7 @@ theme.Product = (function() {
      */
     onUnload: function() {
       this.$container.off(this.namespace);
+      $(selectors.productFeaturedImage).off('.productCard');
     }
   });
 
