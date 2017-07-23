@@ -10,6 +10,7 @@
 .collection-header__content--table {
   width: 100%;
   display: table;
+  table-layout: fixed;
 }
 
 .collection-header__description {
@@ -43,11 +44,13 @@
 
 .collection-header__image {
   text-align: center;
+  max-width: 400px;
+  margin-bottom: 1em;
 
   @include media-query($medium-up) {
     display: table-cell;
     vertical-align: middle;
-    max-width: 400px;
+    margin-bottom: 0;
   }
 }
 
