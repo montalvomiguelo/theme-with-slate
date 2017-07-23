@@ -197,11 +197,8 @@ theme.SiteHeader = (function() {
 
     var offset = cache.$siteHeader.outerHeight();
 
-    setTimeout(function() {
-      cache.$siteHeader.addClass(config.activeHeaderStickyClass);
-      cache.$body.css('padding-top', offset);
-    }, 250);
-
+    cache.$siteHeader.addClass(config.activeHeaderStickyClass);
+    cache.$body.css('padding-top', offset);
   }
 
   function unsetStickyHeader() {
