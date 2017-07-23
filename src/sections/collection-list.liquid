@@ -7,7 +7,7 @@
   .collections-list {
     background-color: {{ section.settings.background_color }};
     {% if section.settings.background_image != blank %}
-      background-image: url({{ section.settings.background_image | img_url: '1024x' }});
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
     {% endif %}
   }
 </style>
