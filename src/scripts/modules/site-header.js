@@ -132,16 +132,13 @@ theme.SiteHeader = (function() {
   }
 
   function showSubMenu($el) {
-    $el.addClass(config.activeSubMenuClass);
-
-    // hide open sub menus
     if (cache.$megamenuItemActiveSubMenu.length) {
       hideSubMenu(cache.$megamenuItemActiveSubMenu);
     }
 
-    cache.$megamenuItemActiveSubMenu = $el;
+    $el.addClass(config.activeSubMenuClass);
 
-    // set expanded on open sub menu
+    cache.$megamenuItemActiveSubMenu = $el;
   }
 
   function hideChildMenu($el) {
