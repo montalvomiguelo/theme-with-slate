@@ -71,11 +71,9 @@
   @include clearfix;
 }
 // Close icon
-.modal .close {
+.modal-header .close {
   //margin-top: -2px;
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
   padding: 0;
   background: darken($color-border, 1.6%);
   border: none;
