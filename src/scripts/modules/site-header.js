@@ -11,7 +11,6 @@ theme.SiteHeader = (function() {
     megamenuItem: '.megamenu__item',
     megamenuItemActiveSubMenu: '.megamenu__item--active-sub-menu',
     siteHeader: '.site-header',
-    promoBar: '.promo-bar',
   };
 
   var config = {
@@ -80,7 +79,6 @@ theme.SiteHeader = (function() {
       $megamenuItem: $(selectors.siteNavigation).find(selectors.megamenuItem),
       $megamenuItemActiveSubMenu: $(selectors.megamenuItemActiveSubMenu),
       $siteHeader: $(selectors.siteHeader),
-      $promoBar: $(selectors.promoBar),
     };
   }
 

@@ -17,8 +17,9 @@ window.theme = window.theme || {};
 // =require sections/footer-section.js
 // =require sections/featured-collection-section.js
 // =require sections/slideshow.js
+// =require sections/collection-section.js
 
-/*================ Modules ================*/
+/*================ Global ================*/
 // =require global/qty-selector.js
 
 /*================ Modules ================*/
@@ -29,7 +30,8 @@ window.theme = window.theme || {};
 // =require modules/site-footer.js
 // =require modules/product-card.js
 // =require modules/quick-view.js
-// =require modules/collection.js
+// =require modules/collection-sorting.js
+// =require modules/collection-sidebar.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
@@ -42,7 +44,7 @@ $(document).ready(function() {
   sections.register('footer', theme.FooterSection);
   sections.register('featured-collection-section', theme.FeaturedCollectionSection);
   sections.register('slideshow', theme.Slideshow);
-  sections.register('collection-template', theme.Collection);
+  sections.register('collection-template', theme.CollectionSection);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));
