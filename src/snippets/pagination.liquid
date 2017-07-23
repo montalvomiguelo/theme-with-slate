@@ -1,3 +1,31 @@
-<div class="pagination">
-  {{ paginate | default_pagination }}
-</div>
+<ul class="pagination">
+  <li class="pagination__item">
+    {% unless paginate.previous.is_link %}
+      <div class="pagination__button pagination__button--disabled">
+        {% include 'icon-arrow-left' %}
+        <span class="icon-fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.previous.url }}" class="pagination__button">
+        {% include 'icon-arrow-left' %}
+        <span class="icon-fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </a>
+    {% endunless %}
+  </li>
+  <li class="pagination__text">
+    {{ 'general.pagination.current_page' | t: current: paginate.current_page, total: paginate.pages }}
+  </li>
+  <li class="pagination__item">
+    {% unless paginate.next.is_link %}
+      <div class="pagination__button pagination__button--disabled">
+        {% include 'icon-arrow-right' %}
+        <span class="icon-fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.next.url }}" class="pagination__button">
+        {% include 'icon-arrow-right' %}
+        <span class="icon-fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </a>
+    {% endunless %}
+  </li>
+</ul>

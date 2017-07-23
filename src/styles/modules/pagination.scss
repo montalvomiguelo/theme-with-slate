@@ -1,0 +1,40 @@
+.pagination {
+  text-align: center;
+  list-style: none;
+  margin-top: $gutter;
+  margin-bottom: $phi * 1em;
+  padding: 0;
+}
+
+.pagination__item,
+.pagination__text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pagination__button {
+  //background: lighten($color-border, 3.5%);
+  display: block;
+
+  &:hover {
+    //background: darken($color-border, 1.6%);
+    .icon {
+      fill: $color-body-text;
+    }
+  }
+
+  .icon {
+    fill: $color-light-body-text;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.pagination__button--disabled {
+  opacity: $opacity-link-hover;
+}
+
+.pagination__text {
+  padding: 0 $phi * 1em;
+  color: $color-light-body-text;
+}

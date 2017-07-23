@@ -29,6 +29,7 @@ window.theme = window.theme || {};
 // =require modules/site-footer.js
 // =require modules/product-card.js
 // =require modules/quick-view.js
+// =require modules/collection.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
@@ -41,6 +42,7 @@ $(document).ready(function() {
   sections.register('footer', theme.FooterSection);
   sections.register('featured-collection-section', theme.FeaturedCollectionSection);
   sections.register('slideshow', theme.Slideshow);
+  sections.register('collection-template', theme.Collection);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

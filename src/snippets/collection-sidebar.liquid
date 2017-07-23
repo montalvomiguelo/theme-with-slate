@@ -1,0 +1,98 @@
+<div class="collection-sidebar">
+  <h6 class="collection-sidebar__headline">{{ linklists[section.settings.sidebar_linklist].title }}</h6>
+  <ul class="mobile-nav mobile-nav--alt">
+    {% for link in linklists[section.settings.sidebar_linklist].links %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% if menus[child_list_handle].links != blank %}
+        <li class="mobile-nav__item mobile-nav__item--has-child-menu">
+          <a class="color-primary" href="{{ link.url }}">
+            {{ link.title }}
+            <span>
+              {% include 'icon-minus' %}
+              {% include 'icon-plus' %}
+            </span>
+          </a>
+          <ul class="mobile-nav__child-menu">
+            {% for childlink in menus[child_list_handle].links %}
+              {% capture grandchild_list_handle %}{{ child_list_handle }}-{{ childlink.title | handleize }}{% endcapture %}
+              {% if linklists[grandchild_list_handle].links != blank %}
+                <li class="mobile-nav__item mobile-nav__item--has-grandchild-menu">
+                  <a class="color-primary bg-white" href="{{ childlink.url }}">
+                    {{ childlink.title }}
+                    <span>
+                      {% include 'icon-minus' %}
+                      {% include 'icon-plus' %}
+                    </span>
+                  </a>
+                  <ul class="mobile-nav__grandchild-menu">
+                    {% for grandchildlink in linklists[grandchild_list_handle].links %}
+                      <li class="mobile-nav__item">
+                        <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                </li>
+              {% else %}
+                <li class="mobile-nav__item">
+                  <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li class="mobile-nav__item">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {% if section.settings.tag_filtering %}
+    <h6 class="collection-sidebar__headline">{{ 'collections.sidebar.tags' | t }}</h6>
+    {% if collection.all_tags.size > 0 %}
+      <ul class="collection-tags">
+        <li class="collection-tags__item{% unless current_tags %} collection-tags__item--active{% endunless %}">
+
+          {% comment %}
+          Good for /collections/all collection and regular collections
+          {% endcomment %}
+          {% if collection.handle %}
+            <a href="/collections/{{ collection.handle }}">
+              {{ 'collections.general.all_of_collection' | t }}
+            </a>
+
+            {% comment %}
+            Good for automatic type collections
+            {% endcomment %}
+          {% elsif collection.current_type %}
+            <a href="{{ collection.current_type | url_for_type }}">
+              {{ 'collections.general.all_of_collection' | t }}
+            </a>
+
+            {% comment %}
+            Good for automatic vendor collections
+            {% endcomment %}
+          {% elsif collection.current_vendor %}
+            <a href="{{ collection.current_vendor | url_for_vendor }}">
+              {{ 'collections.general.all_of_collection' | t }}
+            </a>
+          {% endif %}
+        </li>
+        {% assign tags_list = section.settings.tags_list | split: ',' %}
+        {% for tag in tags_list %}
+          {% if current_tags contains tag %}
+            <li class="collection-tags__item collection-tags__item--active">
+              {{ tag | link_to_remove_tag: tag }}
+            </li>
+          {% else %}
+            <li class="collection-tags__item">
+              {{ tag | link_to_tag: tag }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+</div>
