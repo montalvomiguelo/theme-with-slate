@@ -1,0 +1,12 @@
+<div class="product-card">
+  <a href="#">
+    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+
+    <p class="product-card__title">
+      {{ 'homepage.onboarding.product_title' | t }}
+    </p>
+  </a>
+
+  <p class="product-card__price">{{ 1999 | money }}</p>
+</div>
