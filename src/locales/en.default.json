@@ -119,7 +119,8 @@
       "view_all": "View all"
     },
     "sidebar": {
-      "tags": "Filter by"
+      "tags": "Filter by",
+      "filters": "Filters"
     },
     "sorting": {
       "title": "Sort by",

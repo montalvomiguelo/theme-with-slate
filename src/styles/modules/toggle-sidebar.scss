@@ -1,0 +1,29 @@
+.toggle-sidebar {
+  background: darken($color-border, 1.6%);
+  color: $color-light-body-text;
+  display: block;
+  padding: .8em $grid-gutter-mobile;
+  text-transform: uppercase;
+  margin-bottom: $phi * 1em;
+  font-weight: $font-weight-bold;
+
+  &:hover,
+  &:focus {
+    color: $color-body-text;
+  }
+
+  @include media-query($medium) {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+
+  @include media-query($large-up) {
+    display: none;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 1em;
+  }
+}

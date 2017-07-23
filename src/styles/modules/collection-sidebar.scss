@@ -1,5 +1,22 @@
 .collection-sidebar {
 
+  @include media-query($medium-down) {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s;
+  }
+
+  @include media-query($large-up) {
+    margin-bottom: $phi * 1em;
+  }
+
+}
+
+.collection-sidebar--active {
+  @include media-query($medium-down) {
+    max-height: $width-site;
+    margin-bottom: $phi * 1em;
+  }
 }
 
 .collection-sidebar__headline {

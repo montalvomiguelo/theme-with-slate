@@ -1,8 +1,17 @@
     <div class="grid collection-sorting">
-      <div class="grid__item one-half collection-sorting__view">
-        &nbsp;
+      <div class="grid__item medium-up--one-half small--hide">
+        {% comment %}
+          Toggle between collection.liquid and collection.list.liquid with the
+          ?view= parameter.
+        {% endcomment %}
+        <button class="collection-sorting__button-view{% unless template contains 'list' %} collection-sorting__button-view--active{% endunless %}" data-view="grid">
+          {% include 'icon-grid' %}
+        </button>
+        <button class="collection-sorting__button-view{% if template contains 'list' %} collection-sorting__button-view--active{% endif %}" data-view="grid">
+          {% include 'icon-list' %}
+        </button>
       </div>
-      <div class="grid__item one-half collection-sorting__right">
+      <div class="grid__item medium-up--one-half collection-sorting__right">
         <label for="SortBy">{{ 'collections.sorting.title' | t }}</label>
         <select name="SortBy" id="SortBy">
           <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
@@ -14,5 +23,6 @@
           <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
           <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
         </select>
+        <input id="DefaultSort" type="hidden" value="{{ collection.sort_by | default: collection.default_sort_by }}">
       </div>
     </div>

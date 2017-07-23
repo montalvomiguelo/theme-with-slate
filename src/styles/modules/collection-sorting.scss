@@ -1,12 +1,28 @@
 .collection-sorting {
-
+  margin-bottom: $phi * 1em;
 }
 
 .collection-sorting__right {
-  text-align: right;
+  @include media-query($medium-up) {
+    text-align: right;
+  }
 
   label {
     display: inline-block;
     margin-right: 5px;
   }
+}
+
+.collection-sorting__button-view {
+  color: $color-light-body-text;
+  border: 0;
+  background: transparent;
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.collection-sorting__button-view--active {
+  color: $color-secondary;
 }
