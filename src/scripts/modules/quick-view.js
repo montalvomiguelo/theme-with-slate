@@ -52,7 +52,7 @@ theme.QuickView = (function() {
     var currentVariantPrice = slate.Currency.formatMoney(currentVariant.price, theme.moneyFormat);
     var isProductOnSale = this.product.isProductOnSale();
     var compareAtPrice = slate.Currency.formatMoney(currentVariant.compare_at_price, theme.moneyFormat);
-    var productTags = this.product.tags();
+    var productType = this.product.type();
     var productVariants = this.product.variants();
     var productOptions = this.product.optionsWithValues();
     var isCurrentVariantSalePrice = this.product.isCurrentVariantSalePrice();
@@ -66,7 +66,7 @@ theme.QuickView = (function() {
       hasOnlyOneImage: hasOnlyOneImage,
       productImages: productImages,
       productDescription: productDescription,
-      productTags: productTags,
+      productType: productType,
       currentVariantPrice: currentVariantPrice,
       compareAtPrice: compareAtPrice,
       hasOnlyDefaultVariant: hasOnlyDefaultVariant,

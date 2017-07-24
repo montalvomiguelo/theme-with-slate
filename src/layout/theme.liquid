@@ -43,7 +43,7 @@
         addToCart: {{ 'products.product.add_to_cart' | t | json }},
         soldOut: {{ 'products.product.sold_out' | t | json }},
         unavailable: {{ 'products.product.unavailable' | t | json }},
-        tagged: {{ 'general.meta.tagged' | t | json }},
+        productType: {{ 'products.product.product_type' | t | json }},
         quantity: {{ 'products.product.quantity' | t | json }},
         regularPrice: {{ 'products.product.regular_price' | t | json }},
         viewProductDetails: {{ 'products.product.view_product_details' | t | json }}
@@ -128,12 +128,10 @@
           </a>
         </h1>
         <div class="product-single__meta">
-          {{#if productTags}}
+          {{#if productType}}
             <p>
-              <strong>{{strings.tagged}}</strong>
-              {{#productTags}}
-                {{this}}{{#unless @last}}, {{/unless}}
-              {{/productTags}}
+              <strong>{{strings.productType}}</strong>
+              {{productType}}
             </p>
           {{/if}}
         </div>

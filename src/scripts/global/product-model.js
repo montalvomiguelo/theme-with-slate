@@ -114,5 +114,9 @@ window.ProductModel = (function() {
     return this.product.description;
   };
 
+  Product.prototype.type = function() {
+    return this.product.type;
+  };
+
   return Product;
 })();
