@@ -1,0 +1,25 @@
+.about-header {
+  background-size: cover;
+  background-position: center;
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+}
+
+.about-header__title {
+  color: $color-secondary;
+  font-size: $font-size-h4;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1em;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h1;
+  }
+}
+
+.about-header__content {
+  max-width: $width-site / $phi;
+  margin-left: auto;
+  margin-right: auto;
+}
