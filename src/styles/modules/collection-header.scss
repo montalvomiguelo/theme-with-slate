@@ -38,7 +38,7 @@
 .collection-header__description--big {
   @include media-query($medium-up) {
     font-size: $font-size-h4;
-    max-width: 600px;
+    max-width: $width-site / $phi;
     text-align: center;
   }
 }
