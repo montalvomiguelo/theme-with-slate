@@ -21,6 +21,7 @@ window.theme = window.theme || {};
 
 /*================ Global ================*/
 // =require global/qty-selector.js
+// =require global/product-model.js
 
 /*================ Modules ================*/
 // =require modules/site-header.js
@@ -32,6 +33,7 @@ window.theme = window.theme || {};
 // =require modules/quick-view.js
 // =require modules/collection-sorting.js
 // =require modules/collection-sidebar.js
+// =require modules/inflector.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
