@@ -17,22 +17,22 @@
   <div class="site-footer__inner">
     <div class="wrapper">
       <div class="grid">
-        <div class="grid__item large-up--one-quarter">
+        <div class="grid__item large-up--one-fifth">
           {%- assign footer_linklist = section.settings.footer_linklist_1 -%}
           {% include 'footer-links' %}
         </div>
 
-        <div class="grid__item large-up--one-quarter">
+        <div class="grid__item large-up--one-fifth">
           {%- assign footer_linklist = section.settings.footer_linklist_2 -%}
           {% include 'footer-links' %}
         </div>
 
-        <div class="grid__item large-up--one-quarter">
+        <div class="grid__item large-up--one-fifth">
           {%- assign footer_linklist = section.settings.footer_linklist_3 -%}
           {% include 'footer-links' %}
         </div>
 
-        <div class="grid__item large-up--one-quarter">
+        <div class="grid__item large-up--two-fifths">
           <div class="site-footer__contact">
             <h5 class="">{{ section.settings.footer_contact_title }}</h5>
             {% unless section.settings.footer_contact_phone == blank %}
@@ -123,7 +123,7 @@
         "id": "copyright_background",
         "label": "Copyright background",
         "default": "#f5f5f5"
-      }
+      },
       {
         "type": "link_list",
         "id": "footer_linklist_1",
@@ -143,22 +143,22 @@
         "default": "footer"
       },
       {
-         "type": "text",
-         "id": "footer_contact_title",
-         "label": "Contact title",
-         "default": "Contact"
+        "type": "text",
+        "id": "footer_contact_title",
+        "label": "Contact title",
+        "default": "Contact"
       },
       {
-         "type": "text",
-         "id": "footer_contact_phone",
-         "label": "Phone",
-         "default": "811 123 45 67"
+        "type": "text",
+        "id": "footer_contact_phone",
+        "label": "Phone",
+        "default": "811 123 45 67"
       },
       {
-         "type": "text",
-         "id": "footer_contact_email",
-         "label": "Contact",
-         "default": "contact@your-store.com"
+        "type": "text",
+        "id": "footer_contact_email",
+        "label": "Contact",
+        "default": "contact@your-store.com"
       },
       {
         "type": "checkbox",
