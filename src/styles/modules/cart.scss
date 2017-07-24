@@ -1,0 +1,43 @@
+.cart {
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+}
+
+.cart__footer {
+  margin-top: $phi * 2em;
+
+  @include media-query($medium-up) {
+    text-align: right;
+  }
+
+  input[type="submit"] {
+    display: inline-block;
+    margin-top: 1em;
+    vertical-align: middle;
+
+    & + input[type="submit"] {
+      margin-left: 1em;
+    }
+
+    @include media-query($medium-up) {
+      width: calc(50% - 1em);
+      max-width: 16em;
+    }
+  }
+
+  h6,
+  p,
+  span {
+    display: block;
+    margin-top: 0;
+  }
+
+  label {
+    text-align: left;
+  }
+
+  textarea {
+    width: 100%;
+    margin-bottom: $phi * 1em;
+  }
+}

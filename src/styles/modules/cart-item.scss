@@ -1,0 +1,35 @@
+.cart-item {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: $phi * 1em;
+}
+
+.cart-item__image,
+.cart-item__content,
+.cart-item__remove {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cart-item__image {
+  width: 120px;
+}
+
+.cart-item__content {
+  padding-left: $grid-gutter-mobile;
+
+  @include media-query($medium-up) {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+}
+
+.cart-item__remove {
+  width: $gutter;
+
+  .icon {
+    width: $gutter;
+    height: $gutter;
+  }
+}
