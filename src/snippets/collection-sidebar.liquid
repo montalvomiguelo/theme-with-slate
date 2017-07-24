@@ -51,7 +51,8 @@
 
   {% if section.settings.tag_filtering %}
     <h6 class="collection-sidebar__headline">{{ section.settings.filter_by_title }}</h6>
-    {% if collection.all_tags.size > 0 %}
+    {% assign tags_list = section.settings.tags_list | split: ',' %}
+    {% if tags_list.size > 0 %}
       <ul class="collection-tags">
         <li class="collection-tags__item{% unless current_tags %} collection-tags__item--active{% endunless %}">
 
@@ -80,7 +81,6 @@
             </a>
           {% endif %}
         </li>
-        {% assign tags_list = section.settings.tags_list | split: ',' %}
         {% for tag in tags_list %}
           {% if current_tags contains tag %}
             <li class="collection-tags__item collection-tags__item--active">

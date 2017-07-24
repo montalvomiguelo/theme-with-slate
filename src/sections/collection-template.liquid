@@ -11,53 +11,8 @@
 
 <div class="collection-section" data-section-id="{{ section.id }}" data-section-type="collection-template">
 
-  <div class="wrapper">
-    {% include 'breadcrumb' %}
-  </div>
+  {% include 'collection-header' %}
 
-  {% if collection.handle == 'all' %}
-    <header class="collection-header" role="banner">
-      <div class="wrapper">
-        <div class="collection-header__content">
-          {% if collection.description != blank %}
-            <div class="collection-header__description collection-header__description--big rte">
-              {{ collection.description }}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    </header>
-  {% else %}
-    <header class="collection-header">
-      <div class="wrapper">
-        <div class="collection-header__content collection-header__content--table">
-          <div class="collection-header__image">
-            {% if collection.image != blank %}
-              {{ collection | img_url: '600x' | img_tag: collection.title }}
-            {% elsif collection.products.first != blank %}
-              {{ collection.products.first | img_url: '600x' | img_tag: collection.title }}
-            {% else %}
-            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-            {% endif %}
-          </div>
-            <div class="collection-header__description">
-              <h1 class="collection-header__title">{{ collection.title }}</h1>
-              {% if collection.description != blank %}
-                <div class="rte">
-                  {{ collection.description }}
-                </div>
-              {% endif %}
-            </div>
-        </div>
-      </div>
-    </header>
-  {% endif %}
-
-  <a id="ToggleSidebar" class="toggle-sidebar" href="#">
-    {% include 'icon-filter' %}
-    {{ 'collections.sidebar.filters' | t }}
-  </a>
   <div class="wrapper">
     <div class="grid">
       <div class="grid__item large-up--one-quarter">
@@ -117,6 +72,7 @@
         "type": "text",
         "id": "tags_list",
         "label": "Tags list",
+        "default": "Under $50,$50 - $100,$100 - $200,$200 - $400, Above $400",
         "info": "Separated by a comma. Example: Small,Medium,Large"
       },
       {

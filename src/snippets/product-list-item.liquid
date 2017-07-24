@@ -1,0 +1,62 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign variantCount = product.variants | size %}
+
+<div class="product-card product-card--list">
+  <div class="grid">
+    <div class="grid__item medium--one-third large-up--two-sixths">
+      <a class="product-card__image" href="{{ product.url | within: collection }}">
+        {{ product.featured_image.src | img_url: '600x600' | img_tag: product.title }}
+      </a>
+    </div>
+    <div class="grid__item large-up--four-sixths medium--two-thirds">
+      <p class="product-card__title">{{ product.title }}</p>
+      <p class="product-card__price">
+        {% if product.price_varies %}{{ 'products.product.from' | t }}{% endif %}
+        {{ product.price | money }}
+        {% if on_sale %}
+          <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+        {% endif %}
+      </p>
+      <div class="product-card__description">
+        {{ product.description | strip_html | truncatewords: 30}}
+      </div>
+      <div class="grid product-card__footer">
+        <div class="grid__item medium-up--one-half">
+          <form action="/cart/add" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            {% if sold_out %}
+              <button class="btn" type="submit" value="Submit" disabled>
+                {{ 'products.product.sold_out' | t }}
+              </button>
+            {% else %}
+              {% if variantCount > 1 %}
+                <a class="btn" href="{{ product.url | within: collection }}" title="{{ product.title }}">
+                  {{ 'products.product.select_options' | t }}
+                </a>
+              {% else %}
+                <button class="btn" type="submit" value="Submit">
+                  {{ 'products.product.add_to_cart' | t }}
+                </button>
+              {% endif %}
+            {% endif %}
+            </form>
+        </div>
+        <div class="grid__item small--hide medium-up--one-half">
+          <span class="product-card__quickview" data-handle="{{ product.handle }}">
+            {% include 'icon-quickview' %}
+            {{ 'products.product.quickview' | t }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

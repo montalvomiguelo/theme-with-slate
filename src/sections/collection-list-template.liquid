@@ -1,0 +1,89 @@
+{% paginate collection.products by 12 %}
+
+<style>
+  .collection-header {
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
+    {% endif %}
+  }
+</style>
+
+<div class="collection-section" data-section-id="{{ section.id }}" data-section-type="collection-template">
+
+  {% include 'collection-header' %}
+
+  <div class="wrapper">
+    <div class="grid">
+      <div class="grid__item large-up--one-quarter">
+        {% include 'collection-sidebar' %}
+      </div>
+
+      <div class="grid__item large-up--three-quarters">
+        {% include 'collection-sorting' %}
+
+        <div class="grid grid--uniform">
+          {% for product in collection.products %}
+            <div class="grid__item">
+              {% include 'product-list-item' %}
+            </div>
+          {% else %}
+            <div class="grid__item">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Collection",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "sidebar_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "tag_filtering",
+        "label": "Enable tag filtering",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tags_list",
+        "label": "Tags list",
+        "default": "Under $50,$50 - $100,$100 - $200,$200 - $400, Above $400",
+        "info": "Separated by a comma. Example: Small,Medium,Large"
+      },
+      {
+        "type": "text",
+        "id": "filter_by_title",
+        "label": "Tag filtering title",
+        "default": "Filter by"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      }
+    ]
+  }
+{% endschema %}
