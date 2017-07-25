@@ -1,0 +1,38 @@
+.contact-us {
+  background-position: bottom;
+  background-repeat: repeat-x;
+  padding-bottom: $phi * 2em;
+}
+
+.contact-us__wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $width-site / $phi;
+
+  .contact-form {
+    margin-top: $phi * 1em;
+    input,
+    textarea {
+      width: 100%;
+    }
+
+    .btn {
+      @include media-query($medium-up) {
+        max-width: 16em;
+      }
+    }
+
+    .errors {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .grid__item {
+    margin-bottom: 1em;
+  }
+}
+
+.contact-us__content {
+  text-align: center;
+}

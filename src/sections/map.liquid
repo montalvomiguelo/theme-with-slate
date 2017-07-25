@@ -1,0 +1,31 @@
+{% if section.settings.api_key %}
+  <script>
+    theme.mapKey = {{ section.settings.api_key | json }};
+    theme.mapMarkerFill = {{ settings.color_secondary | json }};
+  </script>
+{% endif %}
+
+<div class="map-section" data-section-id="{{ section.id }}" data-section-type="map">
+  <div class="map-section__container" id="Map-{{ section.id }}" data-address-setting="{{ section.settings.map_address }}"></div>
+</div>
+
+{% schema %}
+  {
+    "name": "Map",
+    "settings": [
+      {
+        "id": "api_key",
+        "type": "text",
+        "label": "Google Maps API key",
+        "info": "If your store experiences more than 2,500 visitors a day, you’ll need to generate both [JavaScript](https://developers.google.com/maps/documentation/javascript/get-api-key) and [Geocoding](https://developers.google.com/maps/documentation/geocoding/get-api-key) API keys"
+      },
+      {
+        "id": "map_address",
+        "type": "text",
+        "label": "Map address",
+        "info": "Google maps will find the exact location",
+        "default": "80 Spadina Ave, Toronto"
+      }
+    ]
+  }
+{% endschema %}

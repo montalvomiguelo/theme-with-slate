@@ -1,0 +1,101 @@
+<style>
+  .contact-us {
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
+    {% endif %}
+  }
+</style>
+
+<div class="contact-us">
+  <div class="wrapper">
+
+    {% include 'breadcrumb' %}
+
+    <div class="contact-us__wrapper">
+      <div class="section-header">
+        <h2 class="section-header__title">{{ page.title }}</h2>
+      </div>
+
+      <div class="rte contact-us__content">
+        {{ page.content }}
+      </div>
+
+      {% form 'contact' %}
+
+        {% if form.posted_successfully? %}
+          <p class="form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="grid">
+          <div class="grid__item">
+            <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+            <input type="text"
+              name="contact[name]"
+              id="ContactFormName"
+              placeholder="{{ 'contact.form.name' | t }}"
+              value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          </div>
+          <div class="grid__item medium-up--one-half">
+            <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+            <input type="email"
+              name="contact[email]"
+              id="ContactFormEmail"
+              placeholder="{{ 'contact.form.email' | t }}"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off">
+          </div>
+          <div class="grid__item medium-up--one-half">
+            <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel"
+              name="contact[phone]"
+              id="ContactFormPhone"
+              placeholder="{{ 'contact.form.phone' | t }}"
+              value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              pattern="[0-9\-]*">
+            </div>
+            <div class="grid__item">
+              <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+              <textarea rows="10"
+                name="contact[body]"
+                id="ContactFormMessage"
+                placeholder="{{ 'contact.form.message' | t }}">
+                {% if form.body %}
+                  {{ form.body }}
+                {% endif %}
+              </textarea>
+            </div>
+        </div>
+
+        <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}">
+
+      {% endform %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Contact page",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      }
+    ]
+  }
+{% endschema %}
