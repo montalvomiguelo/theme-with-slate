@@ -19,10 +19,8 @@
       margin-left: 1em;
     }
 
-    @include media-query($medium-up) {
-      width: calc(50% - 1em);
-      max-width: 16em;
-    }
+    width: calc(50% - 1em);
+    max-width: 16em;
   }
 
   h6,
