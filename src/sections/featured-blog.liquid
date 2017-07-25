@@ -10,6 +10,7 @@
     </div>
 
     {% assign blog = blogs[section.settings.blog] %}
+
     {% assign grid_item_width = 'medium-up--one-half' %}
 
     {% if section.settings.post_limit == '3' %}
@@ -19,32 +20,7 @@
     <div class="grid">
       {% for article in blog.articles limit:section.settings.post_limit %}
         <div class="grid__item {{ grid_item_width }}">
-          <div class="blog-post">
-            {% if article.image %}
-              <figure classs="blog-post__image">
-                <a href="{{ article.url }}">
-                  {{ article | img_url: '600x' | img_tag: article.title }}
-                </a>
-              </figure>
-            {% endif %}
-            <h4 class="blog-post__title">
-              <a href="{{ article.url }}">{{ article.title }}</a>
-            </h4>
-            <div class="rte">
-              {% if article.excerpt.size > 0 %}
-                {{ article.excerpt }}
-              {% else %}
-                {{ article.content | strip_html | truncate: 150 }}
-              {% endif %}
-            </div>
-            <p class="blog-post__meta">
-              {{ article.published_at | time_tag: format: 'month_day_year' }}
-              <a href="{{ article.url }}">
-                {{ 'blogs.article.read_more' | t }}
-                {% include 'icon-arrow-right' %}
-              </a>
-            </p>
-          </div>
+          {% include 'article-loop' %}
         </div>
       {% else %}
         {% for i in (1..3) %}

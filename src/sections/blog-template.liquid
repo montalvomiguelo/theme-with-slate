@@ -1,0 +1,103 @@
+<style>
+  .blog-posts {
+    background-color: {{ section.settings.background_color }};
+  }
+  {% if section.settings.background_image != blank %}
+    .blog-posts__header {
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
+    }
+  {% endif %}
+</style>
+
+{% paginate blog.articles by 5 %}
+
+  <div class="wrapper">
+    {% include 'breadcrumb' %}
+  </div>
+
+  {%- assign blog_title = blog.title -%}
+
+  {% if current_tags %}
+    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+  {% endif %}
+
+  <div class="blog-posts__header">
+    <div class="wrapper">
+      <h2>{{ blog_title }}</h2>
+    </div>
+  </div>
+
+  <div class="blog-posts">
+    {% if blog.all_tags.size > 0 %}
+      <div class="wrapper blog-posts__categories">
+        <ul>
+          {% for tag in blog.all_tags %}
+
+            {% if current_tags contains tag %}
+              <li>{{ tag }}</li>
+            {% else %}
+              <li>{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <div class="wrapper">
+      {% assign grid_item_width = 'medium-up--one-half' %}
+      {% if section.settings.posts_per_row == '3' %}
+        {% assign grid_item_width = 'medium--one-half large-up--one-third' %}
+      {% endif %}
+
+      <div class="grid">
+        {% for article in blog.articles %}
+          <div class="grid__item {{ grid_item_width }}">
+            {% include 'article-loop' %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "select",
+        "id": "posts_per_row",
+        "label": "Posts per row",
+        "default": "2",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fbfbfc"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Header background image"
+      }
+    ]
+  }
+{% endschema %}

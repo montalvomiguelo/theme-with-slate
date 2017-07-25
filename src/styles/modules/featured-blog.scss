@@ -5,7 +5,7 @@
 
 .featured-blog__more {
   color: $color-primary;
-  margin-top: $phi * 1em;
+  //margin-top: $phi * 1em;
   display: inline-block;
 
   @include media-query($medium-up) {
