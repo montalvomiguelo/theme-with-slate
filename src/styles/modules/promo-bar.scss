@@ -5,6 +5,10 @@
   padding-bottom: .6em;
   font-weight: $font-weight-bold;
 
+  a {
+    color: inherit;
+  }
+
   .site-header--sticky & {
     display: none;
   }
