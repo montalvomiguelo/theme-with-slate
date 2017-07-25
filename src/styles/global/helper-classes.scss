@@ -97,3 +97,15 @@
 .mb-2em {
   margin-bottom: 1em !important;
 }
+
+.headline {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-top: 0;
+  color: $color-secondary;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h2;
+  }
+}

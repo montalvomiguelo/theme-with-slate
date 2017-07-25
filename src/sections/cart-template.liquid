@@ -7,7 +7,7 @@
 <div class="cart" data-section-id="{{ section.id }}" data-section-type="cart">
   <div class="wrapper">
     {% if cart.item_count > 0 %}
-      <h1 class="mb-2em text-center product-single__title">{{ 'cart.general.title' | t }}</h1>
+      <h1 class="text-center headline cart__title">{{ 'cart.general.title' | t }}</h1>
 
       <form action="/cart" method="post" novalidate>
         {% for item in cart.items %}

@@ -39,6 +39,7 @@ window.theme = window.theme || {};
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
+// =require templates/search.js
 
 $(document).ready(function() {
   var sections = new slate.Sections();

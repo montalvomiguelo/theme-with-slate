@@ -41,3 +41,11 @@
     margin-bottom: $phi * 1em;
   }
 }
+
+.cart__title {
+  margin-bottom: $phi * 2em;
+
+  @include media-query($medium-up) {
+    margin-bottom: $phi * 1em;
+  }
+}

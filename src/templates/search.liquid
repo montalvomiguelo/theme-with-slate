@@ -1,80 +1,59 @@
-{% paginate search.results by 10 %}
+{% paginate search.results by 8 %}
 
-  <h1>
-    {% if search.performed %}
+<div class="search-results">
+
+  <div class="wrapper">
+
+    {% include 'breadcrumb' %}
+
+    <div class="search-results__content">
+
+      <h1 class="headline text-center search-results__title">
+        {{ 'general.search.title' | t }}
+      </h1>
+
+      <form class="search-results__form" action="/search" method="get" role="search">
+        <label for="Search" class="label-hidden">
+          {{ 'general.search.placeholder' | t }}
+        </label>
+        <input type="search"
+               name="q"
+               id="Search"
+               value="{{ search.terms | escape }}"
+               placeholder="{{ 'general.search.placeholder' | t }}">
+        <button type="submit">
+          {% include 'icon-search' %}
+          <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+      </form>
+
+      <p class="search-results__meta">
+      {% capture terms %}<strong>"{{ search.terms }}"</strong>{% endcapture %}
       {% if search.results_count == 0 %}
-        {{ 'general.search.no_results_html' | t: terms: search.terms }}
+        {{ 'general.search.no_results_html' | t: terms: terms }}
       {% else %}
-        {{ 'general.search.results_for_html' | t: terms: search.terms }}
+        {{ 'general.search.results_for_html' | t: terms: terms }}
       {% endif %}
-    {% else %}
-      {{ 'general.search.title' | t }}
-    {% endif %}
-  </h1>
+      </p>
 
-  <form action="/search" method="get" role="search">
-    <label for="Search" class="label-hidden">
-      {{ 'general.search.placeholder' | t }}
-    </label>
-    <input type="search"
-           name="q"
-           id="Search"
-           value="{{ search.terms | escape }}"
-           placeholder="{{ 'general.search.placeholder' | t }}">
-    <button type="submit" class="btn">
-      {% include 'icon-search' %}
-      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-    </button>
-  </form>
+      {% if search.performed %}
+        <div class="grid">
+          {% for product in search.results %}
+            <div class="grid__item">
+              {% include 'product-list-item' %}
+            </div>
+          {% endfor %}
+        </div>
 
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+      {% endif %}
 
-{% if search.performed %}
-    <ul>
-      {% for item in search.results %}
-        <li>
-          {% if item.featured_image %}
-            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-              {{ item.featured_image.src | img_url: '240x240' | img_tag: item.featured_image.alt }}
-            </a>
-          {% endif %}
+    </div>
 
-          <h5>{{ item.title | link_to: item.url }}</h5>
+  </div>
 
-          {% if item.object_type == 'product' %}
-            <p>
-              {% if item.compare_at_price > item.price %}
-                {% if item.price_varies %}
-                  {% assign sale_price = item.price | money %}
-                  {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                {% else %}
-                  {{ 'products.product.on_sale' | t }}
-                  <span itemprop="price">{{ item.price | money }}</span>
-                {% endif %}
-                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                <s>{{ item.compare_at_price | money }}</s>
-              {% else %}
-                {% if item.price_varies %}
-                  {% assign price = item.price | money %}
-                  <span itemprop="price">{{ 'products.product.from_text_html' | t: price: price }}</span>
-                {% else %}
-                  <span itemprop="price">{{ item.price | money }}</span>
-                {% endif %}
-              {% endif %}
-              {% unless item.available %}
-              {{ 'products.product.sold_out' | t }}
-              {% endunless %}
-            </p>
-          {% else %}
-            <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-          {% endif %}
-
-        </li>
-      {% endfor %}
-    </ul>
-
-    {% if paginate.pages > 1 %}
-      {% include 'pagination' %}
-    {% endif %}
-  {% endif %}
+</div>
 
 {% endpaginate %}

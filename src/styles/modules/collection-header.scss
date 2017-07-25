@@ -63,9 +63,9 @@
   margin-top: 0;
   margin-bottom: .5em;
   text-transform: uppercase;
-  font-size: $font-size-base;
+  font-size: $font-size-h4;
 
   @include media-query($medium-up) {
-    font-size: $font-size-h4;
+    font-size: $font-size-h3;
   }
 }
