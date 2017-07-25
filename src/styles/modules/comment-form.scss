@@ -1,0 +1,18 @@
+.comment-form {
+  .grid__item {
+    margin-bottom: 1em;
+
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    width: 100%;
+
+    @include media-query($medium-up) {
+      max-width: 16rem;
+    }
+  }
+}

@@ -16,4 +16,19 @@
   }
 }
 
+.article-single__tags {
+  list-style: none;
+  padding: 0;
+  margin-top: $phi * 1em;
+  font-size: $font-size-small;
+  color: $color-primary;
 
+  li {
+    display: inline-block;
+  }
+
+  a {
+    color: inherit;
+  }
+
+}

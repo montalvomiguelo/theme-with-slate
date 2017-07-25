@@ -1,0 +1,32 @@
+.nav-posts {
+  @include clearfix();
+  margin-top: $phi * 2rem;
+  margin-bottom: $phi * 2rem;
+  color: $color-secondary;
+  font-size: $font-size-small;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-base;
+  }
+}
+
+.nav-posts__left,
+.nav-posts__right {
+  display: block;
+
+  a {
+    color: inherit;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.nav-posts__left {
+  float: left;
+}
+
+.nav-posts__right {
+  float: right;
+}

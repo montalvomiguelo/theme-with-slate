@@ -1,6 +1,8 @@
 .page-sidebar {
-  @include media-query($small) {
-    margin-top: $phi * 2em;
+  margin-top: $phi * 2em;
+
+  @include media-query($large-up) {
+    margin-top: 0;
   }
 }
 

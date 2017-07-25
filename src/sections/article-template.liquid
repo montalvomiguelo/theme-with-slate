@@ -42,7 +42,8 @@
           </div>
 
           {% if article.tags.size > 0 %}
-            <ul>
+            <ul class="article-single__tags">
+              <li>{{ 'general.meta.tagged' | t }}</li>
               {% for tag in article.tags %}
                 <li>
                   <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
@@ -55,12 +56,32 @@
             {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
           {% endif %}
 
+          {% comment %}
+            Create links to the next and previous articles, if available.
+          {% endcomment %}
+          {% if blog.next_article or blog.previous_article %}
+            <p class="nav-posts">
+            {% if blog.previous_article %}
+              <span class="nav-posts__left">
+                {% include 'icon-arrow-left' %}
+                {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+              </span>
+            {% endif %}
+            {% if blog.next_article %}
+              <span class="nav-posts__right">
+                {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }}
+                {% include 'icon-arrow-right' %}
+              </span>
+            {% endif %}
+            </p>
+          {% endif %}
+
           {% if blog.comments_enabled? %}
-            <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+            <h4>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h4>
 
             {% paginate article.comments by 5 %}
 
-            <div id="comments">
+            <div id="comments" class="comments">
               {% if comment and comment.status and paginate.current_page == 1 %}
                 <p class="form-success">
                   {% if blog.moderated? and comment.status != 'published' %}
@@ -107,44 +128,50 @@
             {% endpaginate %}
 
             {% form 'new_comment', article %}
-              <h3>{{ 'blogs.comments.title' | t }}</h3>
+              <h5>{{ 'blogs.comments.title' | t }}</h5>
 
               {{ form.errors | default_errors }}
 
-              <label for="CommentAuthor" class="label-hidden">
-                {{ 'blogs.comments.name' | t }}
-              </label>
-              <input type="text"
-                     name="comment[author]"
-                     id="CommentAuthor"
-                     class="{% if form.errors contains 'author' %}input-error{% endif %}"
-                     placeholder="{{ 'blogs.comments.name' | t }}"
-                     value="{{ form.author }}"
-                     autocapitalize="words">
-
-              <label for="CommentEmail" class="label-hidden">
-                {{ 'blogs.comments.email' | t }}
-              </label>
-              <input type="email"
-                     name="comment[email]"
-                     id="CommentEmail"
-                     class="{% if form.errors contains 'email' %}input-error{% endif %}"
-                     placeholder="{{ 'blogs.comments.email' | t }}"
-                     value="{{ form.email }}"
-                     spellcheck="false"
-                     autocomplete="off"
-                     autocapitalize="off">
-
-              <label for="CommentBody" class="label-hidden">
-                {{ 'blogs.comments.message' | t }}
-              </label>
-              <textarea
-                name="comment[body]"
-                id="CommentBody"
-                class="{% if form.errors contains 'body' %}input-error{% endif %}"
-                placeholder="{{ 'blogs.comments.message' | t }}">
-                {{ form.body }}
-              </textarea>
+              <div class="grid">
+                <div class="grid__item large-up--one-half">
+                  <label for="CommentAuthor" class="label-hidden">
+                    {{ 'blogs.comments.name' | t }}
+                  </label>
+                  <input type="text"
+                         name="comment[author]"
+                         id="CommentAuthor"
+                         class="{% if form.errors contains 'author' %}input-error{% endif %}"
+                         placeholder="{{ 'blogs.comments.name' | t }}"
+                         value="{{ form.author }}"
+                         autocapitalize="words">
+                </div>
+                <div class="grid__item large-up--one-half">
+                  <label for="CommentEmail" class="label-hidden">
+                    {{ 'blogs.comments.email' | t }}
+                  </label>
+                  <input type="email"
+                         name="comment[email]"
+                         id="CommentEmail"
+                         class="{% if form.errors contains 'email' %}input-error{% endif %}"
+                         placeholder="{{ 'blogs.comments.email' | t }}"
+                         value="{{ form.email }}"
+                         spellcheck="false"
+                         autocomplete="off"
+                         autocapitalize="off">
+                </div>
+                <div class="grid__item">
+                  <label for="CommentBody" class="label-hidden">
+                    {{ 'blogs.comments.message' | t }}
+                  </label>
+                  <textarea
+                    name="comment[body]"
+                    id="CommentBody"
+                    class="{% if form.errors contains 'body' %}input-error{% endif %}"
+                    placeholder="{{ 'blogs.comments.message' | t }}">
+                    {{ form.body }}
+                  </textarea>
+                </div>
+              </div>
 
               {% if blog.moderated? %}
                 <p>{{ 'blogs.comments.moderated' | t }}</p>

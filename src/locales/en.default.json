@@ -15,7 +15,7 @@
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}",
-      "tagged": "Tagged"
+      "tagged": "Tagged in:"
     },
     "404": {
       "title": "404 Page Not Found",
@@ -67,7 +67,9 @@
       "view_all": "View all",
       "author_on_date_html": "Posted by {{ author }} on {{ date }}",
       "comment_meta_html": "{{ author }} on {{ date }}",
-      "read_more": "Read more"
+      "read_more": "Read more",
+      "older_post": "Older Post",
+      "newer_post": "Newer Post"
     },
     "comments": {
       "title": "Leave a comment",
