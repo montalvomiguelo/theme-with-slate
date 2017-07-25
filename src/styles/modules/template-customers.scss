@@ -1,0 +1,60 @@
+[class^="template-customers"] {
+  input,
+  textarea,
+  select {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: $phi * 1em;
+
+    @include media-query($medium-up) {
+      max-width: 16em;
+    }
+  }
+
+  form {
+    .grid__item {
+      margin-bottom: 1em;
+    }
+
+    p + .btn {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+
+  main {
+    >.wrapper {
+      padding-top: $phi * 2em;
+      padding-bottom: $phi * 2em;
+
+      & + .wrapper {
+        padding-top: 0;
+      }
+    }
+  }
+
+  h1 {
+    color: $color-secondary;
+    font-size: $font-size-h4;
+    margin-top: 0;
+    margin-bottom: 1em;
+
+    @include media-query($medium-up) {
+      font-size: $font-size-h2;
+    }
+  }
+
+  .responsive-table {
+    @include media-query($medium-up) {
+      width: 100%;
+    }
+    th {
+      text-align: left;
+    }
+  }
+}
