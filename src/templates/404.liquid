@@ -1,2 +1,11 @@
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+<div class="error-404">
+  {% include '404-image' %}
+
+  <div class="wrapper">
+  <h1 class="error-404__title">{{ 'general.404.title' | t }}</h1>
+  <p class="error-404__text">{{ 'general.404.subtext' | t }}</p>
+  <a href="/" class="btn">
+    {{ 'general.404.link' | t }}
+  </a>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.error-404 {
+  background-color: lighten($color-secondary, 30%);
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+  text-align: center;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn {
+    width: 100%;
+
+    @include media-query($medium-up) {
+      max-width: 16em;
+    }
+  }
+}
+
+.error-404__title {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-normal;
+  color: $color-secondary;
+  text-transform: uppercase;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h1;
+  }
+}
+
+.error-404__text {
+  color: $color-secondary;
+  @include media-query($medium-up) {
+    font-size: $font-size-h3;
+  }
+}
