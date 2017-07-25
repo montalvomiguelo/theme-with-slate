@@ -9,10 +9,6 @@
       }
     }
   {% endif %}
-
-  .history-list {
-    background-color: {{ section.settings.background_color }};
-  }
 </style>
 
 <div data-section-id="{{ section.id }}" data-section-type="about">
@@ -26,94 +22,16 @@
   </div>
 </div>
 
-<div class="history-list">
-  <div class="wrapper">
-    {% for block in section.blocks limit: section.blocks.size %}
-      <div class="event-item">
-        <div class="grid">
-          <div class="event-item__image-wrapper grid__item medium--one-third large-up--two-sixths">
-            <span class="event-item__index">{{ forloop.index }}</span>
-            <img class="event-item__image" src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title }}">
-          </div>
-          <div class="grid__item medium--two-thirds large-up--four-sixths">
-            <h6 class="event-item__title">{{ block.settings.title }}</h6>
-            <p class="event-item__date">{{ block.settings.date }}</p>
-            <div class="event-item__content rte">{{ block.settings.content }}</div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-</div>
-
 {% schema %}
   {
-    "name": "About",
+    "name": "About page",
     "max_blocks": 23,
     "settings": [
-      {
-        "type": "header",
-        "content": "Header"
-      },
       {
         "type": "image_picker",
         "id": "header_background_image",
         "label": "Background image"
-      },
-      {
-        "type": "header",
-        "content": "Content"
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background color",
-        "default": "#fbfbfd"
       }
-    ],
-    "blocks": [
-      {
-        "type": "event",
-        "name": "Event",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "Event title"
-          },
-          {
-            "type": "text",
-            "id": "date",
-            "label": "Date",
-            "default": "1987"
-          },
-          {
-            "type": "richtext",
-            "id": "content",
-            "label": "Content",
-            "default": "<p>You can use richtext settings to allow text content with basic formatting. Supported formatting options are bold, italic, underline, links, and paragraphs.</p>"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          }
-        ]
-      }
-    ],
-    "default": {
-      "blocks": [
-        {
-          "type": "event"
-        },
-        {
-          "type": "event"
-        },
-        {
-          "type": "event"
-        }
-      ]
-    }
+    ]
   }
 {% endschema %}
