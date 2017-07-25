@@ -1,0 +1,14 @@
+.shopify-challenge__container {
+  padding-top: $phi * 2em;
+  padding-bottom: $phi * 2em;
+  padding-left: $grid-gutter-mobile;
+  padding-right: $grid-gutter-mobile;
+
+  .btn {
+    width: 100%;
+
+    @include media-query($medium-up) {
+      max-width: 16em;
+    }
+  }
+}
