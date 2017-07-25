@@ -1,0 +1,62 @@
+<style>
+  {% if section.settings.enable_description == false %}
+    .collection-item__description {
+      display: none;
+    }
+  {% endif %}
+  .collections-list {
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: '600x' }});
+    {% endif %}
+  }
+</style>
+
+
+<div class="collections-list">
+  <div class="wrapper">
+    {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h2 class="section-header__title section-header__title--clean">{{ section.settings.title | escape }}</h2>
+    </div>
+    {% endif %}
+    <div class="grid grid--uniform">
+      {% for collection in collections %}
+        <div class="grid__item medium--one-half large-up--one-third" {{ block.shopify_attributes }}>
+          {% include 'collection-item' %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "List collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fbfbfd"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_description",
+        "label": "Enable descripton",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}
