@@ -1,0 +1,15 @@
+<div class="page-sidebar">
+  <div class="page-sidebar__menu">
+    <h6 class="page-sidebar__menu-title">{{ linklists[section.settings.sidebar_linklist].title }}</h6>
+    <ul>
+      {% for link in linklists[section.settings.sidebar_linklist].links %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+            {% include 'icon-arrow-right' %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

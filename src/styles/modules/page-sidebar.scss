@@ -1,0 +1,38 @@
+.page-sidebar {
+  @include media-query($small) {
+    margin-top: $phi * 2em;
+  }
+}
+
+.page-sidebar__menu {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    border-top: 1px solid $color-border;
+  }
+
+  a {
+    display: block;
+    padding-top: .8em;
+    padding-bottom: .8em;
+
+    .icon {
+      float: right;
+    }
+  }
+}
+
+.page-sidebar__menu-title {
+  color: $color-secondary;
+  font-size: $font-size-base;
+  margin-top: 0;
+  margin-bottom: 1em;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h4;
+  }
+}

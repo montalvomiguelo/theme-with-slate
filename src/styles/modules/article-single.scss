@@ -1,0 +1,19 @@
+.article-single__title {
+  font-size: $font-size-h4;
+  color: $color-secondary;
+  margin: 0;
+
+  @include media-query($medium-up) {
+    font-size: $font-size-h3;
+  }
+}
+
+.article-single__meta {
+  color: $color-light-body-text;
+
+  time {
+    color: $color-primary;
+  }
+}
+
+
