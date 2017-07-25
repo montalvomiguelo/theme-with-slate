@@ -1,0 +1,65 @@
+<style>
+  .article {
+    background-color: {{ section.settings.background_color }};
+  }
+</style>
+
+{% comment %}
+  When a comment is submitted, the browser is redirected to a page that includes 
+  the new comment id in its URL.
+  #comments is a required ID and is used as an anchor link by Shopify.
+{% endcomment %}
+
+{%- assign number_of_comments = article.comments_count -%}
+
+{% comment %}
+  If a comment was just submitted but requires moderation, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.status != 'published' %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+<div class="article">
+  <div class="wrapper">
+    {% include 'breadcrumb' %}
+
+    <div class="grid">
+      <div class="grid__item large-up--three-quarters">
+        <article class="article-single" role="article" itemscope itemtype="http://schema.org/Article">
+
+          <header role="banner">
+            <h1 class="article-single__title article-single__title--page">{{ page.title }}</h1>
+          </header>
+
+          <div class="rte" itemprop="articleBody">
+            {{ page.content }}
+          </div>
+
+        </article>
+      </div>
+      <div class="grid__item large-up--one-quarter">
+        {% include 'page-sidebar' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Article",
+    "settings": [
+      {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fbfbfc"
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar_linklist",
+        "label": "Sidebar navigation",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
