@@ -106,12 +106,12 @@
         </div>
       </form>
     {% else %}
-      <h1 class="product-single__title">{{ 'cart.general.title' | t }}</h1>
+      <h1 class="text-center headline cart__title mb-1em">{{ 'cart.general.title' | t }}</h1>
 
       {% comment %}
       Cart empty state
       {% endcomment %}
-      <div class="supports-cookies">
+      <div class="supports-cookies text-center">
         <p>{{ 'cart.general.empty' | t }}</p>
         <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
       </div>
