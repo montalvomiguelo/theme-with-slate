@@ -33,7 +33,7 @@
     padding: $phi*.5em 0;
 
     &:after {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Capa_1' data-name='Capa 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:{{ settings.color_primary | url_encode }};}%3C/style%3E%3C/defs%3E%3Ctitle%3Emenos%3C/title%3E%3Cpath class='cls-1' d='M23.2 15.8H6.8a.8.8 0 1 1 0-1.6h16.4c.4.1.8.4.8.8a.86.86 0 0 1-.8.8z'/%3E%3C/svg%3E");
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmFjNmM5O308L3N0eWxlPjwvZGVmcz48dGl0bGU+bWVub3M8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIzLjIgMTUuOEg2LjhhLjguOCAwIDEgMSAwLTEuNmgxNi40Yy40LjEuOC40LjguOGEuODYuODYgMCAwIDEtLjguOHoiLz48L3N2Zz4=);
       background-position-y: center;
       background-repeat: no-repeat;
       bottom: 0;
@@ -46,7 +46,7 @@
     }
 
     &.collapsed:after {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Capa_1' data-name='Capa 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:{{ settings.color_secondary | url_encode }};}%3C/style%3E%3C/defs%3E%3Ctitle%3Emas%3C/title%3E%3Cpath class='cls-1' d='M15.8 15.8h7.4a.8.8 0 0 0 0-1.6h-7.4V6.8a.8.8 0 0 0-1.6 0v7.4H6.8a.86.86 0 0 0-.8.8 1.42 1.42 0 0 0 .2.6.85.85 0 0 0 .6.2h7.4v7.4a1.42 1.42 0 0 0 .2.6 1.42 1.42 0 0 0 .6.2.86.86 0 0 0 .8-.8z'/%3E%3C/svg%3E");
+      background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzAgMzAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojNTZkM2NlO308L3N0eWxlPjwvZGVmcz48dGl0bGU+bWFzPC90aXRsZT48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNS44IDE1LjhoNy40YS44LjggMCAwIDAgMC0xLjZoLTcuNFY2LjhhLjguOCAwIDAgMC0xLjYgMHY3LjRINi44YS44Ni44NiAwIDAgMC0uOC44IDEuNDIgMS40MiAwIDAgMCAuMi42Ljg1Ljg1IDAgMCAwIC42LjJoNy40djcuNGExLjQyIDEuNDIgMCAwIDAgLjIuNiAxLjQyIDEuNDIgMCAwIDAgLjYuMi44Ni44NiAwIDAgMCAuOC0uOHoiLz48L3N2Zz4=);
     }
   }
 
