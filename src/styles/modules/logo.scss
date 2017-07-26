@@ -2,11 +2,6 @@
   line-height: normal;
   margin-bottom: 0;
   margin-top: 0;
-
-  img {
-    max-width: 100%;
-  }
-
 }
 
 .logo__link {
@@ -26,7 +21,8 @@
   left: $grid-gutter-mobile;
 
   @include media-query($medium-up) {
-    left: 0;
+    position: static;
+    @include prefix(transform, translate(0), webkit ms spec);
   }
 
   @include media-query($large-up) {
@@ -39,6 +35,8 @@
 }
 
 .logo__image {
+  width: 100%;
+  max-width: 100%;
 
   @include media-query($medium-down) {
     display: none;
