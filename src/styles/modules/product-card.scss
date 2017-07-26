@@ -57,12 +57,13 @@
   max-width: 16em;
   display: none;
   background: rgba(white, .7);
-  left: 1px;
-  right: 1px;
+  left: 0;
+  right: 0;
   margin: 0 auto;
   border: 1px solid $color-primary;
   color: $color-body-text;
   cursor: pointer;
+  width: 100%;
 
   .product-card--list & {
     background: transparent;
