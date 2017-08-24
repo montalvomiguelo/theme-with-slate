@@ -1,0 +1,28 @@
+.instagram-grid {
+  margin-left: 0;
+}
+
+.instagram-grid__item {
+  background-position: center;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  padding-left: 0;
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  &:hover {
+    opacity: $opacity-link-hover;
+  }
+
+  .placeholder-svg {
+    @include vertical-align(absolute);
+    left: 0;
+    right: 0;
+  }
+}

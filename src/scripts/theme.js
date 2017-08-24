@@ -20,6 +20,7 @@ window.theme = window.theme || {};
 // =require sections/collection-section.js
 // =require sections/cart.js
 // =require sections/maps.js
+// =require sections/instagram-feed.js
 
 /*================ Global ================*/
 // =require global/qty-selector.js
@@ -52,6 +53,7 @@ $(document).ready(function() {
   sections.register('collection-template', theme.CollectionSection);
   sections.register('cart', theme.Cart);
   sections.register('map', theme.Maps);
+  sections.register('instagram-feed', theme.InstagramFeed);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

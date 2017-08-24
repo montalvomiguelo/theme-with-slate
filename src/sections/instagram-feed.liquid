@@ -1,0 +1,144 @@
+<div class="instagram-section" data-section-id="{{ section.id }}" data-section-type="instagram-feed">
+  <div class="wrapper">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+    {% if section.settings.instagram_client_id != blank %}
+      <div class="instagram-grid grid grid--uniform" data-count="{{ section.settings.instagram_number | strip }}" data-access-token="{{ section.settings.instagram_client_id | strip }}" data-grid-item-width="{{ section.settings.instagram_grid_width }} {{ section.settings.instagram_grid_width_tablet }} {{ section.settings.instagram_grid_width_mobile}}"></div>
+    {% else %}
+      {% capture imgCount %}{{ section.settings.instagram_number }}{% endcapture %}
+      <div class="instagram-grid grid grid--uniform" data-count="{{ section.settings.instagram_number | strip }}" data-access-token="{{ section.settings.instagram_client_id | strip }}" data-grid-item-width="{{ section.settings.instagram_grid_width }} {{ section.settings.instagram_grid_width_tablet }} {{ section.settings.instagram_grid_width_mobile}}">
+        {% for i in (1..imgCount) %}
+          <a class="instagram-grid__item grid__item {{ section.settings.instagram_grid_width }} {{ section.settings.instagram_grid_width_tablet }} {{ section.settings.instagram_grid_width_mobile }}" href="#!">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Instagram feed",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading text",
+        "default": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "instagram_client_id",
+        "label": "Access token",
+        "info": "[Get your access token](http:\/\/www.milehighthemes.com\/pages\/instagram-integration)"
+      },
+      {
+        "type": "select",
+        "id": "instagram_number",
+        "label": "Total images",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          }
+        ],
+        "default": "8"
+      },
+      {
+        "type": "select",
+        "id": "instagram_grid_width",
+        "label": "Desktop",
+        "default": "large-up--one-third",
+        "options": [
+          { "value": "large-up--one-half", "label": "2 per row"},
+          { "value": "large-up--one-third", "label": "3 per row"},
+          { "value": "large-up--one-quarter", "label": "4 per row"},
+          { "value": "large-up--one-fifth", "label": "5 per row"},
+          { "value": "large-up--one-sixth", "label": "6 per row"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "instagram_grid_width_tablet",
+        "label": "Tablet",
+        "default": "medium--one-third",
+        "options": [
+          { "value": "medium--one-half", "label": "2 per row"},
+          { "value": "medium--one-third", "label": "3 per row"},
+          { "value": "medium--one-quarter", "label": "4 per row"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "instagram_grid_width_mobile",
+        "label": "Mobile",
+        "default": "small--one-third",
+        "options": [
+          { "value": "small--one-half", "label": "2 per row"},
+          { "value": "small--one-third", "label": "3 per row"},
+          { "value": "small--one-quarter", "label": "4 per row"}
+        ]
+      }
+    ],
+    "presets": [
+      {
+      "name": "Instagram feed",
+      "category": "Social media"
+      }
+    ]
+  }
+{% endschema %}
