@@ -40,11 +40,12 @@
 
   h6 {
     color: inherit;
-    font-family: $font-stack-header;
+    font-family: $font-stack-slideshow-header;
     font-size: $font-size-h1;
     margin-bottom: 0;
     margin-top: 0;
     font-weight: $font-weight-normal;
+    line-height: 1;
 
     @include media-query($medium-up) {
       font-size: $font-size-giga;
@@ -56,6 +57,7 @@
   }
 
   p {
+    font-family: $font-stack-slideshow-body;
     margin-top: $phi * 1em;
     margin-bottom: 0;
 
