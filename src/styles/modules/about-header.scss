@@ -7,15 +7,16 @@
 
 .about-header__title {
   color: $color-secondary;
-  font-size: $font-size-h4;
   text-transform: uppercase;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: .6em;
 
-  @include media-query($medium-up) {
-    font-size: $font-size-h1;
+  img {
+    max-width: 400px;
+    display: inline;
   }
+
 }
 
 .about-header__content {

@@ -4,7 +4,8 @@ theme.Slideshow = (function() {
   var defaults = {
     arrows: false,
     dots: true,
-    adaptiveHeight: true
+    adaptiveHeight: true,
+    autoplay: true,
   };
 
   function Slideshow(container) {
