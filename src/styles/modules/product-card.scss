@@ -24,6 +24,7 @@
 
   @include media-query($medium-up) {
     font-size: $font-size-h4;
+    min-height: 48px;
   }
 
   .product-card--list & {
