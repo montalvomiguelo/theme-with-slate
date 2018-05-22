@@ -14,7 +14,9 @@
 <div data-section-id="{{ section.id }}" data-section-type="about">
   <div class="about-header">
     <div class="wrapper">
-      <h1 class="about-header__title">{{ page.title }}</h1>
+      <h1 class="about-header__title">
+        <img src="{{ section.settings.logo | img_url: '700x' }}" alt="{{ page.title }}">
+      </h1>
       <div class="about-header__content rte">
         {{ page.content }}
       </div>
@@ -25,8 +27,12 @@
 {% schema %}
   {
     "name": "About page",
-    "max_blocks": 23,
     "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
       {
         "type": "image_picker",
         "id": "header_background_image",
